@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="theme-color" content="#172554">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="App de estudio de Antropologia - 2do Cuatrimestre 2026">
+<title>Antropologia - App de Estudio</title>
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f4f7fb;--surface:#fff;--text:#1a1d29;--muted:#667085;
+  --primary:#2563eb;--primary-dk:#1e40af;--primary-lt:#dbeafe;
+  --border:#e2e6ed;--success:#15803d;--success-bg:#dcfce7;
+  --warn:#b45309;--warn-bg:#fef3c7;--comp:#7c3aed;--comp-bg:#ede9fe;
+  --shadow:0 2px 12px rgba(15,23,42,.07);
+  --r:16px;--rs:10px;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6;
+  -webkit-tap-highlight-color:transparent;overflow-x:hidden;
+}
+button{font:inherit;cursor:pointer;border:none;background:none}
+a{color:var(--primary);text-decoration:none}
+img{max-width:100%;display:block}
+
+/* ── LAYOUT ── */
+.wrap{width:min(1080px,94%);margin-inline:auto}
+
+/* ── HEADER ── */
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e40af 60%,#2563eb 100%);color:#fff;padding:2.2rem 0 1.8rem}
+.hero-row{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap}
+.hero h1{font-size:clamp(1.5rem,4.5vw,2.4rem);line-height:1.2;margin-bottom:.3rem}
+.hero-sub{color:#93c5fd;font-size:.92rem}
+.hero-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem .85rem;border-radius:999px;background:rgba(255,255,255,.13);font-size:.8rem;font-weight:600;margin-top:.8rem}
+
+/* progress */
+.gprog{margin-top:1.4rem;background:rgba(255,255,255,.1);padding:1rem 1.2rem;border-radius:var(--r)}
+.gprog-top{display:flex;justify-content:space-between;align-items:center;font-size:.88rem;margin-bottom:.5rem}
+.gprog-bar{height:8px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden}
+.gprog-fill{height:100%;width:0;background:linear-gradient(90deg,#60a5fa,#fff);border-radius:99px;transition:width .4s ease}
+
+/* ── NAV / CONTROLS ── */
+.nav{position:sticky;top:0;z-index:50;background:rgba(244,247,251,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.7rem 0}
+.nav-row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.search{flex:1;min-width:0;position:relative}
+.search input{width:100%;padding:.65rem 1rem .65rem 2.6rem;border:1.5px solid var(--border);border-radius:var(--rs);background:var(--surface);font-size:.88rem;outline:none;transition:border .2s}
+.search input:focus{border-color:var(--primary)}
+.search i{position:absolute;left:.85rem;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.9rem;pointer-events:none}
+.filters{display:flex;gap:.35rem;flex-wrap:wrap}
+.fbtn{padding:.5rem .85rem;border-radius:var(--rs);font-size:.78rem;font-weight:700;border:1.5px solid var(--border);background:var(--surface);color:var(--text);transition:all .15s;min-height:38px;white-space:nowrap}
+.fbtn.on{background:var(--primary);color:#fff;border-color:var(--primary)}
+.fbtn.rst{color:#b91c1c;border-color:#fecaca}
+.fbtn.rst:hover{background:#fef2f2}
+
+/* ── MAIN ── */
+main{padding:1.8rem 0 4rem}
+.sec-title{font-size:1.35rem;margin-bottom:.3rem}
+.sec-desc{color:var(--muted);font-size:.86rem;margin-bottom:1.5rem}
+
+/* ── UNIT ── */
+.unit{margin-bottom:2.4rem}
+.unit-hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap}
+.unit-name{font-size:1.2rem;font-weight:700}
+.unit-topic{color:var(--muted);font-size:.84rem;margin:.35rem 0 .7rem}
+.unit-badge{font-size:.76rem;font-weight:700;padding:.35rem .7rem;border-radius:999px;background:var(--surface);border:1px solid var(--border);white-space:nowrap}
+.unit-bar{height:5px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:1.2rem}
+.unit-bar i{display:block;height:100%;background:var(--primary);border-radius:99px;transition:width .4s ease;width:0}
+
+/* ── CLASS CARD ── */
+.cls{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;margin-bottom:1rem}
+.cls-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;padding:1.1rem 1.2rem;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.cls-num{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--primary)}
+.cls-title{font-size:1.05rem;font-weight:600;margin-top:.15rem}
+.cls-date{text-align:right;font-size:.84rem;color:var(--muted);flex-shrink:0}
+.cls-date strong{display:block}
+.tag{display:inline-block;padding:.2rem .55rem;border-radius:999px;font-size:.68rem;font-weight:800;margin-top:.3rem}
+.tag.past{color:var(--success);background:var(--success-bg)}
+.tag.now{color:var(--warn);background:var(--warn-bg)}
+.tag.fut{color:#475467;background:#f1f5f9}
+.cls-count{font-size:.72rem;color:var(--muted);margin-top:.25rem}
+.cls-body{padding:1.1rem 1.2rem}
+
+/* ── LABELS ── */
+.lbl{font-size:.86rem;font-weight:700;margin:1rem 0 .5rem;display:flex;align-items:center;gap:.4rem;color:var(--text)}
+.lbl:first-child{margin-top:0}
+
+/* ── ITEMS ── */
+.rlist,.mlist,.clist{display:grid;gap:.5rem}
+.it{display:flex;gap:.7rem;align-items:flex-start;padding:.85rem;border:1px solid var(--border);border-radius:var(--rs);background:var(--surface);transition:background .15s}
+.it input[type=checkbox]{width:20px;height:20px;accent-color:var(--primary);margin-top:2px;flex-shrink:0;cursor:pointer}
+.it-body{min-width:0;flex:1}
+.it-t{font-weight:700;font-size:.86rem}
+.it-d{font-size:.8rem;color:var(--muted);margin-top:.15rem;line-height:1.45}
+.it.done .it-t{text-decoration:line-through;color:var(--muted)}
+.it.done{background:#f8fafc}
+.it-mat{border-style:dashed;background:#fafcfe}
+
+/* buttons & links */
+.btn-pdf{display:inline-flex;align-items:center;gap:.35rem;margin-top:.45rem;padding:.45rem .9rem;background:var(--primary);color:#fff;border-radius:8px;font-size:.78rem;font-weight:600;min-height:40px;transition:background .15s}
+.btn-pdf:hover{background:var(--primary-dk)}
+.btn-pdf.comp{background:var(--comp)}
+.btn-pdf.comp:hover{background:#6d28d9}
+.btn-ext{display:inline-flex;align-items:center;gap:.3rem;margin-top:.45rem;color:var(--primary);font-size:.8rem;font-weight:600}
+.no-pdf{color:var(--muted);font-style:italic;font-size:.8rem;margin-top:.3rem}
+
+/* complementaria accordion */
+.comp-acc{margin-top:1rem;padding:.9rem 1rem;background:#faf8ff;border:1.5px dashed var(--comp);border-radius:var(--rs)}
+.comp-acc summary{cursor:pointer;font-weight:700;font-size:.86rem;color:var(--comp);list-style:none;display:flex;align-items:center;gap:.4rem;min-height:40px}
+.comp-acc summary::before{content:"\25B8";transition:transform .2s;font-size:.7rem}
+.comp-acc[open] summary::before{transform:rotate(90deg)}
+
+/* note */
+.note{padding:.8rem 1rem;background:#eff6ff;border-radius:var(--rs);color:#1e3a8a;font-size:.82rem;margin-top:.8rem}
+
+/* events */
+.evt{padding:.7rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);margin-top:.6rem;font-size:.82rem}
+
+/* empty */
+.empty{text-align:center;padding:3rem 1rem;color:var(--muted);display:none}
+
+/* ── PDF VIEWER ── */
+.pv{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.94);display:none;flex-direction:column}
+.pv.open{display:flex}
+.pv-bar{display:flex;align-items:center;gap:.5rem;padding:.55rem .8rem;background:#111827;color:#fff;flex-shrink:0;flex-wrap:wrap}
+.pv-bar button{background:rgba(255,255,255,.08);color:#fff;padding:.55rem .75rem;border-radius:8px;font-size:.78rem;font-weight:600;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;gap:.3rem;transition:background .15s}
+.pv-bar button:hover{background:rgba(255,255,255,.18)}
+.pv-title{flex:1;font-size:.8rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.pv-info{font-size:.8rem;color:#9ca3af;white-space:nowrap}
+.pv-bar input[type=number]{width:48px;padding:.3rem;text-align:center;border:1px solid #374151;background:#1f2937;color:#fff;border-radius:6px;font-size:.8rem}
+.pv-canvas{flex:1;overflow:auto;display:flex;justify-content:center;padding:8px;background:#525659;-webkit-overflow-scrolling:touch}
+.pv-canvas canvas{box-shadow:0 4px 24px rgba(0,0,0,.5);max-width:100%}
+.pv-msg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;padding:1.5rem;max-width:90vw}
+.pv-msg.ld{color:#fff;font-size:.95rem}
+.pv-msg.er{color:#fca5a5;font-size:.88rem;line-height:1.5}
+.pv-msg code{background:#1f2937;padding:.2rem .5rem;border-radius:4px;font-size:.82rem;display:inline-block;margin:.3rem 0}
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  .hero{padding:1.6rem 0 1.3rem}
+  .hero h1{font-size:1.35rem}
+  .nav-row{flex-direction:column}
+  .filters{width:100%;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
+  .filters::-webkit-scrollbar{display:none}
+  .fbtn{flex-shrink:0}
+  .unit-hdr{flex-direction:column}
+  .cls-head{flex-direction:column}
+  .cls-date{text-align:left}
+  .it{min-height:48px;padding:.7rem}
+  .btn-pdf{width:100%;justify-content:center;min-height:48px}
+  .pv-bar{gap:.3rem;padding:.4rem .5rem}
+  .pv-bar button{min-height:48px;min-width:48px;font-size:.72rem;padding:.4rem .6rem}
+}
+@media(min-width:900px){
+  .hero{padding:2.8rem 0 2.2rem}
+  .cls-body{padding:1.4rem 1.6rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════ HEADER ════════ -->
+<header class="hero">
+  <div class="wrap hero-row">
+    <div>
+      <span class="hero-badge">2do Cuatrimestre 2026</span>
+      <h1>Antropologia</h1>
+      <p class="hero-sub">Cronograma de estudio, lecturas y progreso</p>
+    </div>
+  </div>
+  <div class="wrap gprog">
+    <div class="gprog-top">
+      <span>Progreso general</span>
+      <strong id="gProgTxt">0 lecturas (0%)</strong>
+    </div>
+    <div class="gprog-bar"><div class="gprog-fill" id="gProgBar"></div></div>
+  </div>
+</header>
+
+<!-- ════════ NAV ════════ -->
+<nav class="nav" aria-label="Controles">
+  <div class="wrap">
+    <div class="nav-row">
+      <div class="search">
+        <i>&#128269;</i>
+        <input type="search" id="inpSearch" placeholder="Buscar autor, titulo, unidad..." aria-label="Buscar">
+      </div>
+    </div>
+    <div class="filters" style="margin-top:.55rem" role="group" aria-label="Filtros">
+      <button class="fbtn on" data-f="all">Todas</button>
+      <button class="fbtn" data-f="pending">Pendientes</button>
+      <button class="fbtn" data-f="done">Leidas</button>
+      <button class="fbtn" data-f="comp">Complementaria</button>
+      <button class="fbtn rst" id="btnReset">Reiniciar</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════ MAIN ════════ -->
+<main class="wrap">
+  <h2 class="sec-title">Plan de la cursada</h2>
+  <p class="sec-desc">Bibliografia obligatoria (cuenta para progreso), material complementario y material para clases. El estado se guarda automaticamente en este dispositivo.</p>
+  <div id="root"></div>
+  <p class="empty" id="emptyMsg">No hay elementos para mostrar.</p>
+</main>
+
+<footer class="wrap" style="text-align:center;color:var(--muted);padding:1rem 0 3rem;font-size:.8rem">
+  Antropologia 2026 - Cronograma basado en el programa oficial
+</footer>
+
+<!-- ════════ PDF VIEWER ════════ -->
+<div class="pv" id="pv" role="dialog" aria-label="Visor de PDF">
+  <div class="pv-bar">
+    <button id="pvClose" aria-label="Cerrar visor">&#8592; Volver</button>
+    <span class="pv-title" id="pvTitle"></span>
+    <span class="pv-info"><span id="pvPgN">1</span>/<span id="pvPgT">1</span></span>
+    <input type="number" id="pvPgIn" min="1" value="1" aria-label="Ir a pagina">
+    <button id="pvPrev" aria-label="Pagina anterior">&#8249;</button>
+    <button id="pvNext" aria-label="Pagina siguiente">&#8250;</button>
+    <button id="pvZoomOut" aria-label="Alejar">&#8722;</button>
+    <button id="pvZoomIn" aria-label="Acercar">&#43;</button>
+    <button id="pvFitW">Ancho</button>
+    <button id="pvFitP">Pagina</button>
+    <button id="pvFS" aria-label="Pantalla completa">&#9974;</button>
+  </div>
+  <div class="pv-canvas" id="pvCanvas">
+    <div class="pv-msg ld" id="pvLoad">Cargando PDF...</div>
+    <div class="pv-msg er" id="pvErr" style="display:none"></div>
+  </div>
+</div>
+
+<!-- ════════ SCRIPT ════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+"use strict";
+
+/* ── PDF.js init ── */
+if(window.pdfjsLib){
+  pdfjsLib.GlobalWorkerOptions.workerSrc=
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+}
+
+/* ── Base path ── */
+var BP="BIBLIOGRAFIA-ANTROPO/bibliograf\u00eda";
+
+/* ── SCHEDULE DATA ── */
+var S=[
+/* ═══ UNIDAD I ═══ */
+{
+  u:"Unidad I",
+  t:"La antropologia como disciplina cientifica",
+  desc:"Caracterizacion de la Antropologia como disciplina cientifica; contexto historico y social del surgimiento de la disciplina; principales momentos y corrientes de la teoria antropologica; desnaturalizacion e historicidad de las relaciones sociales; introduccion a la antropologia feminista y estudios de genero.",
+  cls:[
+    {
+      n:1, dt:"2026-08-11", label:"Clase 1",
+      rd:[
+        {t:"Boivin, M.; Rosato, A.; Arribas, V. (2004). \u201cIntroduccion\u201d",
+         d:"Constructores de Otredad. Introduccion a la antropologia social y cultural. Antropofagia, Buenos Aires. pp. 7\u201313.",
+         f:BP+"/UNIDAD_I/boivin-rosato- arribas INTROD..pdf"},
+        {t:"Quiros, Julieta (2021). \u00bfPara que sirve unx antropologx?",
+         d:"La intervencion antropologica y sus relaciones con la investigacion. Cordoba: Universidad Nacional de Cordoba.",
+         f:BP+"/UNIDAD_I/Quiros-Para_que_sirve_unx_antropologx.pdf"}
+      ],
+      mt:[
+        {t:"Video sobre que es la antropologia",d:"Enlace externo",u:"https://www.youtube.com/watch?v=FnugIFQ2dEM"},
+        {t:"Marques, Josep-Vincent (1980). \u201cNo es natural\u201d",d:"Material para trabajar en clase",f:BP+"/UNIDAD_I/material para clases/Marques_NO ES NATURAL.pdf"},
+        {t:"Guia de la buena esposa",d:"Material para trabajar en clase",f:BP+"/UNIDAD_I/material para clases/guia de la buena esposa.pdf"},
+        {t:"Tradwives: modelo no apto para importacion",d:"Articulo de elDiarioAR",f:BP+"/UNIDAD_I/material para clases/Tradwives_ un modelo no apto para importaci\u00f3n - elDiarioAR.com.html"}
+      ]
+    },
+    {
+      n:2, dt:"2026-08-18", label:"Clase 2",
+      rd:[
+        {t:"Lamas, Marta (2007). \u201cEl genero es cultura\u201d",
+         d:"En: V Campus Euroamericano de Cooperacion Cultural. Almada, Portugal.",
+         f:BP+"/UNIDAD_I/lamas marta-CORTO.pdf",
+         u:"https://www.oei.es/historico/euroamericano/ponencias_derechos_genero.php"},
+        {t:"Pita, Maria Victoria y Martinez, Josefina (2009). Trabajo practico 1",
+         d:"Antropologia social y politica. Papeles de trabajo. Editorial FFyL-UBA. pp. 11\u201327.",
+         f:BP+"/UNIDAD_I/Desnaturalizar- pita, martinez.pdf"}
+      ],
+      mt:[
+        {t:"Desnaturalizar y genero: guia de la buena esposa",d:"Material para trabajar en clase",f:BP+"/UNIDAD_I/material para clases/guia de la buena esposa.pdf"},
+        {t:"Tradwives: modelo no apto para importacion",d:"Articulo de elDiarioAR",f:BP+"/UNIDAD_I/material para clases/Tradwives_ un modelo no apto para importaci\u00f3n - elDiarioAR.com.html"}
+      ]
+    }
+  ],
+  comp:[
+    {t:"Ribeiro - Complementaria",f:BP+"/UNIDAD_I/complementaria/Ribeiro.pdf"},
+    {t:"Neufeld - Desnaturalizar",f:BP+"/UNIDAD_I/complementaria/Neufeld_Desnaturalizar.pdf"},
+    {t:"Lamas - La antropologia feminista y la categoria genero",f:BP+"/UNIDAD_I/complementaria/Lamas - La antropolog\u00eda feminista y la categor\u00eda g\u00e9nero.pdf"},
+    {t:"Krotz - Que se aprende",f:BP+"/UNIDAD_I/complementaria/Krotz que se aprende.pdf"},
+    {t:"Krotz - Alteridad",f:BP+"/UNIDAD_I/complementaria/Krotz Alteridad.pdf"}
+  ]
+},
+/* ═══ UNIDAD II ═══ */
+{
+  u:"Unidad II",
+  t:"Debates en torno a la naturaleza y la cultura",
+  desc:"Teorias evolutivas y mecanismos evolutivos; proceso de hominizacion; unidad de la especie humana y diversidad cultural; dimension biologica y cultural de la evolucion humana; naturaleza y cultura como continuidades evolutivas; reduccionismo biologico / determinismo cultural.",
+  cls:[
+    {
+      n:3, dt:"2026-08-25", label:"Clase 3",
+      rd:[
+        {t:"Bellelli, Cristina y Scheinsohn (1998). \u201cDe que hablamos cuando hablamos de evolucion\u201d",
+         d:"En: Antropologia cultural y arqueologia. Textos basicos. Cadreta Garreta. UBA.",
+         f:BP+"/UNIDAD_II/bellelli.pdf"},
+        {t:"Chiriguini, M.C. (2003). \u201cLa naturaleza de la naturaleza humana\u201d",
+         d:"En: Apertura a la Antropologia: alteridad, cultura, naturaleza humana. Proyecto editorial. pp. 262\u2013269.",
+         f:BP+"/UNIDAD_II/CHIRIGUINI - NATURALEZA_1.pdf"}
+      ],
+      mt:[
+        {t:"Kornblihtt, A. (2013). \u201cDarwin 200/150\u201d",
+         d:"En: La humanidad del genoma. Siglo Veintiuno Editores. pp. 45\u201360.",
+         f:BP+"/UNIDAD_II/material para clases/kornblihtt-darwin-200-150-pp-45-60-en-la-humanidad-del-genoma.pdf"},
+        {t:"TED: How a new species of ancestors...",d:"Enlace externo",u:"https://www.ted.com/talks/juliet_brophy_how_a_new_species_of_ancestors_is_changing_our_theory_of_human_evolution"},
+        {t:"TED: Four billion years of evolution in six minutes",d:"Enlace externo",u:"https://www.ted.com/talks/prosanta_chakrabarty_four_billion_years_of_evolution_in_six_minutes"},
+        {t:"La humanidad en 30 minutos \u2014 Ana Tropea con Pedro Rosemblat",d:"Material indicado en el cronograma"}
+      ]
+    },
+    {
+      n:4, dt:"2026-09-01", label:"Clase 4",
+      rd:[
+        {t:"Boivin, Mauricio (2004). \u201cCap. 1. La construccion del otro por la diferencia\u201d",
+         d:"En: Constructores de otredad. Antropofagia. pp. 27\u201333.",
+         f:BP+"/UNIDAD_II/Boivin CAP1.pdf"}
+      ],
+      mt:[
+        {t:"Morgan, L.H. [1978] (2004). \u201cRazon del progreso humano\u201d",
+         d:"En: Constructores de otredad. pp. 48\u201353.",
+         f:BP+"/UNIDAD_II/material para clases/MORGAN- boivin.pdf"},
+        {t:"Material: CLASE 4 hominizacion",d:"Material complementario de la unidad",
+         f:BP+"/UNIDAD_II/CLASE 4 hominizaci\u00f3n.pdf"}
+      ]
+    }
+  ],
+  comp:[
+    {t:"Tacca \u2014 Lischetti",f:BP+"/UNIDAD_II/Complementaria/TACCA -Lischetti.pdf"},
+    {t:"Chiriguini \u2014 Colonialismo",f:BP+"/UNIDAD_II/Complementaria/CHIRIGUINI - COLONIALISMO.pdf"},
+    {t:"Cavalli-Sforza \u2014 Quienes somos (seleccion)",f:BP+"/UNIDAD_II/Complementaria/cavalli-sforza-quienes-somos-seleccion.pdf"},
+    {t:"Carbonell y Hortola \u2014 RAMPAS 15",f:BP+"/UNIDAD_II/Complementaria/Carbonell___Hortola_RAMPAS_15.pdf"},
+    {t:"Tapia Part 1 (sin asociar a cronograma)",f:BP+"/UNIDAD_II/TAPIA PART1.pdf"},
+    {t:"Tapia Part 2 (sin asociar a cronograma)",f:BP+"/UNIDAD_II/TAPIA PART2.pdf"}
+  ]
+},
+/* ═══ UNIDAD III ═══ */
+{
+  u:"Unidad III",
+  t:"Un recorrido por las teorias antropologicas",
+  desc:"Desde la antropologia clasica hacia una perspectiva critica: funcionalismo britanico de B. Malinowski; antropologia norteamericana y Franz Boas; Levi-Strauss y diversidad cultural; cambio epistemologico; antropologia contemporanea y situada.",
+  cls:[
+    {
+      n:5, dt:"2026-09-08", label:"Clase 5",
+      rd:[
+        {t:"Boivin, M. (2004). \u201cCap. 2. La construccion del otro por la diversidad\u201d",
+         d:"En: Constructores de otredad. Antropofagia.",
+         f:BP+"/UNIDAD_III/boivin CAP 2.pdf"},
+        {t:"Hernandez Soriano, C. y Martinez, Maria Josefina (2000). \u201cEl particularismo historico\u201d",
+         d:"En: Lischetti, M. (comp.), Antropologia, EUDEBA.",
+         f:BP+"/UNIDAD_III/HERNANDEZ MARTINEZ -Lischetti.pdf"}
+      ],
+      mt:[
+        {t:"Bohannan, L. (2004). \u201cShakespeare en la selva\u201d",
+         d:"En: Constructores de otredad. pp. 75\u201380.",
+         f:BP+"/UNIDAD_III/Materiales para trabajar en clases/BOHANNAN- boivin.pdf"}
+      ]
+    },
+    {
+      n:6, dt:"2026-09-15", label:"Clase 6",
+      rd:[
+        {t:"Sinisi, L. (2000). \u201cTeorias contemporaneas en Antropologia\u201d",
+         d:"En: Lischetti, M. (comp.), Antropologia, EUDEBA. pp. 171\u2013179.",
+         f:BP+"/UNIDAD_III/SINISI- Lischetti.pdf"},
+        {t:"Ramos M., Valverde S., Garcia A. y D. Lewin (2006). \u201cLa antropologia: algunos conceptos, ramas y escuelas\u201d",
+         d:"En: La antropologia y el estudio de la cultura. Biblos. pp. 19\u201337.",
+         f:BP+"/UNIDAD_III/Ramos-et al-Conceptos-Ramas-y-Escuelas.pdf"}
+      ],
+      mt:[
+        {t:"TED: El peligro de la historia unica",d:"Enlace externo",u:"https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story?language=es"}
+      ]
+    }
+  ],
+  comp:[
+    {t:"Tarducci \u2014 Mujeres pioneras",f:BP+"/UNIDAD_III/Complemetaria/tarducci mujeres pioneras.pdf"},
+    {t:"Boivin \u2014 Cap. 3 (complementario)",f:BP+"/UNIDAD_III/Complemetaria/boivin-CAP.3.pdf"}
+  ]
+},
+/* ═══ UNIDAD IV ═══ */
+{
+  u:"Unidad IV",
+  t:"La cultura como proceso disputado de construccion de significado",
+  desc:"Revision y vigencia del concepto de cultura; usos de la diversidad cultural para ocultar desigualdad y poder; identificaciones relacionales etnicas, de genero y de clase como construcciones sociohistoricas variables.",
+  cls:[
+    {
+      n:8, dt:"2026-09-29", label:"Clase 8",
+      rd:[
+        {t:"Krotz, Esteban (1994). \u201cCinco ideas falsas sobre la cultura\u201d",
+         d:"Revista de la Universidad Autonoma de Yucatan, Vol. 9, N\u00ba 191, pp. 31\u201336.",
+         f:BP+"/UNIDAD_IV/krotz sobre cultura.pdf"},
+        {t:"Wright, Susan (2004). \u201cLa politizacion de la cultura\u201d",
+         d:"En: Constructores de otredad. pp. 128\u2013141.",
+         f:BP+"/UNIDAD_IV/Wright- la politizaci\u00f3n de la cultura.pdf"}
+      ],
+      mt:[]
+    },
+    {
+      n:9, dt:"2026-10-06", label:"Clase 9",
+      rd:[
+        {t:"Juliano, Dolores (1997). \u201cUniversal/particular: un falso dilema\u201d",
+         d:"En Globalizacion e identidad. Cicus, Buenos Aires. pp. 27\u201337.",
+         f:BP+"/UNIDAD_IV/juliano-d-universal-particular-un-falso-dilema.pdf"},
+        {t:"Grimson, Alejandro (2010). \u201cCulture and Identity: two different notions\u201d",
+         d:"Social Identities, vol. 16, n\u00ba 1, January 2010, pp. 63\u201379.",
+         f:BP+"/UNIDAD_IV/Cultura e Identidad-grimson.pdf"}
+      ],
+      mt:[
+        {t:"Video de la nina wich\u00ed \u2014 tarea para el hogar",d:"Enlace externo",u:"https://drive.google.com/file/d/1ukYGk_ziQP-86VUg_Y_UOQwsTF1mJy4l/view?usp=sharing"}
+      ]
+    },
+    {
+      n:10, dt:"2026-10-13", label:"Clase 10",
+      rd:[
+        {t:"Tarducci, Monica (2013). \u201cAbusos, mentiras y videos. A proposito de la nina wich\u00ed\u201d",
+         d:"Boletin de Antropologia y Educacion. Ano 4, N\u00ba 5.",
+         f:BP+"/UNIDAD_IV/Tarducci wichi.pdf"},
+        {t:"Giammatteo, Maria Eugenia (2021). \u201cYo necesito que algun medico me de un tiempo\u201d",
+         d:"Desafios interculturales en el diagnostico de los trastornos del lenguaje. Facultad de Psicologia \u2014 UBA.",
+         f:BP+"/UNIDAD_IV/Giammatteo, Maria Eugenia (2021). \u201cYo necesito que alg\u00fan m\u00e9dico me d\u00e9 un tiempo\u201d desaf\u00edos interculturales en el diagn\u00f3stico de (...).pdf"}
+      ],
+      mt:[]
+    }
+  ],
+  comp:[
+    {t:"Rockwell \u2014 La dinamica cultural en la escuela",f:BP+"/UNIDAD_IV/Complementaria/Rockwell U4 La din\u00e1mica cultural en la escuela.pdf"},
+    {t:"Padawer \u2014 Identidad juvenil",f:BP+"/UNIDAD_IV/Complementaria/Padawer ident juvenil.pdf"},
+    {t:"Martinez y Diez \u2014 UN4",f:BP+"/UNIDAD_IV/Complementaria/Martinez- Diez UN4.pdf"},
+    {t:"Grimson \u2014 Complementario",f:BP+"/UNIDAD_IV/Complementaria/grimson.pdf"},
+    {t:"Beltran, Maquieira, Alvarez, Sanchez \u2014 Feminismos",f:BP+"/UNIDAD_IV/Complementaria/Elena Beltr\u00e1n, Virginia Maquieira, Silvina \u00c1lvarez, Cristina Sanchez - Feminismos Debates Teoricos Contemporaneos.pdf"}
+  ]
+},
+/* ═══ UNIDAD V ═══ */
+{
+  u:"Unidad V",
+  t:"Familia, parentesco e infancia",
+  desc:"Relaciones de parentesco y familia en la antropologia clasica; repensando parentesco y familia; nocion de infancia; instituciones escolares, regulacion de diferencias y desigualdad; cuerpo, genero y sexualidades.",
+  cls:[
+    {
+      n:11, dt:"2026-10-20", label:"Clase 11",
+      rd:[
+        {t:"Tiscornia, Sofia y Villalta, Carla (2014). \u201cUn vasto campo de estudios: la familia y el parentesco en la perspectiva antropologica\u201d",
+         d:"Derecho de Familia. Revista Interdisciplinaria. N\u00ba 63, marzo 2014. Abeledo Perrot.",
+         f:BP+"/UNIDAD_V/Tiscornia - Villalta 5UN.pdf"},
+        {t:"Colangelo, Adelaida (2005). \u201cLa mirada antropologica sobre la infancia\u201d",
+         d:"Serie Encuentros y Seminarios.",
+         f:BP+"/UNIDAD_V/INFANCIA_colangelo.pdf"}
+      ],
+      mt:[]
+    },
+    {
+      n:12, dt:"2026-10-27", label:"Clase 12",
+      rd:[
+        {t:"Bilinkis, M. y Garcia Palacios, M. (2015). \u201cEl desarrollo esperado: una aproximacion a la sexualidad en la ninez\u201d",
+         d:"Revista Ludicamente, Vol. 4, N\u00ba 7, mayo 2015.",
+         f:BP+"/UNIDAD_V/bilinkis.pdf"},
+        {t:"Louro, Guacira (2018). \u201cCurriculo, genero y sexualidad\u201d",
+         d:"Descentrada, 3(1). DOI: 10.24215/25457284e065.",
+         f:BP+"/UNIDAD_V/GUACIRA LOURO.pdf"},
+        {t:"Cerletti, Laura y Gessaghi, Victoria (2017). \u201cNinios pobres? Ninios ricos?\u201d",
+         d:"Discusiones sobre representaciones de la vida familiar. En: Ninez, regulacion estatal. Editorial Biblos.",
+         f:BP+"/UNIDAD_V/Cerletti-Gessaghi.pdf"}
+      ],
+      mt:[]
+    }
+  ],
+  comp:[
+    {t:"Varela",f:BP+"/UNIDAD_V/Complementaria/Varela.pdf"},
+    {t:"Novaro \u2014 Santillan",f:BP+"/UNIDAD_V/Complementaria/NOVARO- SANTILLAN.pdf"},
+    {t:"Familias y escuelas \u2014 Santillan y Cerletti",f:BP+"/UNIDAD_V/Complementaria/familias-y-escuelas_santillan-y-cerletti.pdf"},
+    {t:"Cuerpo y Escuela",f:BP+"/UNIDAD_V/Complementaria/CUERPO Y ESCUELA.pdf"},
+    {t:"Collier et al.",f:BP+"/UNIDAD_V/Complementaria/collier et.al..pdf"},
+    {t:"Cerletti, Neufeld, Santillan",f:BP+"/UNIDAD_V/Complementaria/CERLETTI, NEUFELD, SANTILLAN.pdf"},
+    {t:"Carli, S. Ninez, pedagogia y politica (Introduccion)",f:BP+"/UNIDAD_V/Complementaria/CARLI, S. Ni\u00f1ez, pedagog\u00eda y pol\u00edtica... (Introducci\u00f3n).pdf"},
+    {t:"Bourdieu \u2014 El espiritu de Familia",f:BP+"/UNIDAD_V/Complementaria/Bourdieu-El-esp\u00edritu-de-Familia-Razones-Pr\u00e1cticas-Angrama.pdf"}
+  ]
+}
+];
+
+/* ── EVENTS (parcial, entregas, etc.) ── */
+var EV=[
+  {dt:"2026-09-22",txt:"PARCIAL PRESENCIAL \u2014 Comprende Unidades I, II y III"},
+  {dt:"2026-11-03",txt:"Entrega de trabajo grupal / recuperatorio"},
+  {dt:"2026-11-10",txt:"Exposicion grupal del trabajo final"},
+  {dt:"2026-11-17",txt:"Exposicion grupal del trabajo final"},
+  {dt:"2026-11-24",txt:"Cierre de notas y evaluacion de cursada"}
+];
+
+/* ══════════════════════════════════════════
+   STATE
+   ══════════════════════════════════════════ */
+var SK="antropologia_v3";
+var st=JSON.parse(localStorage.getItem(SK)||"{}");
+var filt="all", sq="";
+var TODAY=new Date(); TODAY.setHours(0,0,0,0);
+
+function persist(){localStorage.setItem(SK,JSON.stringify(st));}
+function rk(ui,ci,ri){return ui+"|r|"+ci+"|"+ri;}
+
+/* ── date helpers ── */
+var DN=["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"];
+var MN=["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+function fmtDate(s){
+  var d=new Date(s+"T12:00:00");
+  return DN[d.getDay()]+" "+d.getDate()+" de "+MN[d.getMonth()]+" "+d.getFullYear();
+}
+function clsStatus(s){
+  var d=new Date(s+"T12:00:00");
+  var diff=(d-TODAY)/864e5;
+  if(diff<-1) return "past";
+  if(diff<=7)  return "now";
+  return "fut";
+}
+function clsTag(s){return s==="past"?"Finalizada":s==="now"?"Actual / proxima":"Proxima";}
+
+/* ── progress helpers ── */
+function totalR(){var t=0;S.forEach(function(u){u.cls.forEach(function(c){t+=c.rd.length;});});return t;}
+function doneR(){var t=0;for(var k in st)if(st[k]&&k.indexOf("|r|")>=0)t++;return t;}
+function uProg(ui){
+  var u=S[ui],tot=0,don=0;
+  u.cls.forEach(function(c,ci){tot+=c.rd.length;c.rd.forEach(function(_,ri){if(st[rk(ui,ci,ri)])don++;});});
+  return{tot:tot,don:don,pct:tot?Math.round(don/tot*100):0};
+}
+
+/* ── search match ── */
+function matchQ(item,q){
+  if(!q)return true;
+  var lq=q.toLowerCase();
+  return((item.t||"")+" "+(item.d||"")).toLowerCase().indexOf(lq)>=0;
+}
+function matchQUnit(unit,q){
+  if(!q)return true;
+  var lq=q.toLowerCase();
+  return(unit.u+" "+unit.t+" "+unit.desc).toLowerCase().indexOf(lq)>=0;
+}
+
+/* ── render ── */
+function render(){
+  var root=document.getElementById("root");
+  root.innerHTML="";
+  var vis=0;
+
+  S.forEach(function(unit,ui){
+    var p=uProg(ui);
+    var unitHasVisible=false;
+    var classesHtml="";
+
+    if(filt!=="comp"){
+      unit.cls.forEach(function(cl,ci){
+        var ds=clsStatus(cl.dt);
+
+        /* filter readings */
+        var visRd=cl.rd.filter(function(r,ri){
+          var chk=!!st[rk(ui,ci,ri)];
+          if(filt==="done"&&!chk) return false;
+          if(filt==="pending"&&chk) return false;
+          if(!matchQ(r,sq)&&!matchQ(unit,sq)) return false;
+          return true;
+        });
+
+        if(filt!=="all"&&filt!=="comp"&&visRd.length===0&&!sq&&!matchQ(unit,sq)) return;
+
+        var readDone=0;
+        cl.rd.forEach(function(_,ri){if(st[rk(ui,ci,ri)])readDone++;});
+
+        /* build reading items */
+        var rdHtml=visRd.map(function(r){
+          var origI=cl.rd.indexOf(r);
+          var chk=!!st[rk(ui,ci,origI)];
+          var key=rk(ui,ci,origI);
+          var pdfB=r.f
+            ? '<button class="btn-pdf" data-pdf="'+esc(r.f)+'" data-title="'+esc(r.t)+'">&#128196; Leer PDF</button>'
+            : '<span class="no-pdf">PDF no encontrado</span>';
+          var extL=r.u
+            ? ' <a class="btn-ext" href="'+r.u+'" target="_blank" rel="noopener">Enlace externo &#8599;</a>'
+            : "";
+          return '<div class="it'+(chk?" done":"")+'" data-k="'+key+'">'
+            +'<input type="checkbox"'+(chk?" checked":"")+' aria-label="Marcar como leida">'
+            +'<div class="it-body"><div class="it-t">'+r.t+'</div>'
+            +'<div class="it-d">'+(r.d||"")+'</div>'
+            +pdfB+extL+'</div></div>';
+        }).join("");
+
+        /* build material items */
+        var mtHtml="";
+        if(cl.mt&&cl.mt.length){
+          mtHtml='<div class="lbl">&#127916; Material para trabajar en clase</div><div class="mlist">'
+            +cl.mt.map(function(m){
+              var pdfB=m.f
+                ? '<button class="btn-pdf" data-pdf="'+esc(m.f)+'" data-title="'+esc(m.t)+'">&#128196; Ver material</button>'
+                : "";
+              var extL=m.u
+                ? ' <a class="btn-ext" href="'+m.u+'" target="_blank" rel="noopener">Enlace externo &#8599;</a>'
+                : "";
+              return '<div class="it it-mat"><div class="it-body">'
+                +'<div class="it-t">'+m.t+'</div>'
+                +'<div class="it-d">'+(m.d||"")+'</div>'
+                +pdfB+extL+'</div></div>';
+            }).join("")+"</div>";
+        }
+
+        unitHasVisible=true;
+        vis++;
+
+        classesHtml+='<article class="cls">'
+          +'<div class="cls-head"><div>'
+          +'<div class="cls-num">Clase '+cl.n+'</div>'
+          +'<div class="cls-title">'+unit.u+' \u2014 '+cl.label+'</div>'
+          +'</div><div class="cls-date">'
+          +'<strong>'+fmtDate(cl.dt)+'</strong>'
+          +'<span class="tag '+ds+'">'+clsTag(ds)+'</span>'
+          +'<div class="cls-count">'+readDone+'/'+cl.rd.length+' leidas</div>'
+          +'</div></div>'
+          +'<div class="cls-body">'
+          +'<div class="lbl">&#128214; Bibliografia obligatoria</div>'
+          +'<div class="rlist">'+rdHtml+'</div>'
+          +mtHtml
+          +'</div></article>';
+      });
+    }
+
+    /* complementaria section */
+    var compHtml="";
+    if(filt==="comp"&&unit.comp&&unit.comp.length){
+      var visC=unit.comp.filter(function(c){return matchQ(c,sq)||matchQUnit(unit,sq);});
+      if(visC.length===0&&(sq&&!matchQUnit(unit,sq))) return;
+      unitHasVisible=true;
+      vis++;
+      compHtml='<article class="cls"><div class="cls-body">'
+        +'<div class="lbl" style="color:var(--comp)">&#128218; Material complementario \u2014 '+unit.u+'</div>'
+        +'<div class="clist">'
+        +visC.map(function(c){
+          var b=c.f
+            ? '<button class="btn-pdf comp" data-pdf="'+esc(c.f)+'" data-title="'+esc(c.t)+'">&#128196; Leer PDF</button>'
+            : '<span class="no-pdf">PDF no encontrado</span>';
+          return '<div class="it"><div class="it-body"><div class="it-t">'+c.t+'</div>'+b+'</div></div>';
+        }).join("")
+        +"</div></div></article>";
+    }
+
+    /* also show complementaria inside unit when not in comp filter */
+    var compInline="";
+    if(filt!=="comp"&&unit.comp&&unit.comp.length){
+      compInline='<details class="comp-acc"><summary>&#128218; Material complementario ('+unit.comp.length+' documentos)</summary>'
+        +'<div class="clist" style="margin-top:.5rem">'
+        +unit.comp.map(function(c){
+          var b=c.f
+            ? '<button class="btn-pdf comp" data-pdf="'+esc(c.f)+'" data-title="'+esc(c.t)+'">&#128196; Leer PDF</button>'
+            : '<span class="no-pdf">PDF no encontrado</span>';
+          return '<div class="it"><div class="it-body"><div class="it-t">'+c.t+'</div>'+b+'</div></div>';
+        }).join("")
+        +"</div></details>";
+    }
+
+    if(!unitHasVisible&&!compHtml&&!compInline) return;
+
+    var el=document.createElement("section");
+    el.className="unit";
+    el.dataset.ui=ui;
+    el.innerHTML=
+      '<div class="unit-hdr"><div>'
+      +'<div class="unit-name">'+unit.u+' \u2014 '+unit.t+'</div>'
+      +'<div class="unit-topic">'+unit.desc+'</div>'
+      +'</div><span class="unit-badge">'+p.don+'/'+p.tot+' lecturas ('+p.pct+'%)</span></div>'
+      +'<div class="unit-bar"><i style="width:'+p.pct+'%"></i></div>'
+      +(compHtml||"")
+      +'<div class="cls-list">'+classesHtml+'</div>'
+      +compInline;
+    root.appendChild(el);
+  });
+
+  /* events */
+  if(filt!=="comp"){
+    EV.forEach(function(ev){
+      var el=document.createElement("div");
+      el.className="evt";
+      el.innerHTML="<strong>"+fmtDate(ev.dt)+"</strong> \u2014 "+ev.txt;
+      root.appendChild(el);
+    });
+  }
+
+  document.getElementById("emptyMsg").style.display=vis?"none":"block";
+  updateGlobalProg();
+  updateUnitProg();
+  bindUI();
+}
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/'/g,"&#39;").replace(/</g,"&lt;");}
+
+function updateGlobalProg(){
+  var tot=totalR(),don=doneR(),pct=tot?Math.round(don/tot*100):0;
+  document.getElementById("gProgTxt").textContent=don+"/"+tot+" lecturas ("+pct+"%)";
+  document.getElementById("gProgBar").style.width=pct+"%";
+}
+function updateUnitProg(){
+  document.querySelectorAll(".unit").forEach(function(el){
+    var ui=+el.dataset.ui,p=uProg(ui);
+    var badge=el.querySelector(".unit-badge");
+    var bar=el.querySelector(".unit-bar i");
+    if(badge) badge.textContent=p.don+"/"+p.tot+" lecturas ("+p.pct+"%)";
+    if(bar) bar.style.width=p.pct+"%";
+  });
+}
+
+/* ── event delegation ── */
+function bindUI(){
+  /* checkboxes */
+  document.querySelectorAll(".it input[type=checkbox]").forEach(function(cb){
+    cb.onchange=function(e){
+      var item=e.target.closest(".it");
+      var key=item&&item.dataset.k;
+      if(!key)return;
+      st[key]=e.target.checked;
+      persist();
+      render();
+    };
+  });
+
+  /* PDF buttons */
+  document.querySelectorAll("[data-pdf]").forEach(function(btn){
+    btn.onclick=function(e){
+      e.preventDefault();
+      openPdf(btn.dataset.pdf,btn.dataset.title);
+    };
+  });
+}
+
+/* ── FILTERS ── */
+document.querySelectorAll("[data-f]").forEach(function(b){
+  b.onclick=function(){
+    filt=b.dataset.f;
+    document.querySelectorAll("[data-f]").forEach(function(x){x.classList.remove("on");});
+    b.classList.add("on");
+    render();
+  };
+});
+document.getElementById("btnReset").onclick=function(){
+  if(confirm("\u00bfQueres borrar todas las lecturas marcadas?")){
+    st={};persist();render();
+  }
+};
+var sqTimer;
+document.getElementById("inpSearch").oninput=function(e){
+  clearTimeout(sqTimer);
+  sqTimer=setTimeout(function(){sq=e.target.value.trim();render();},200);
+};
+
+/* ══════════════════════════════════════════
+   PDF VIEWER
+   ══════════════════════════════════════════ */
+var pvDoc=null, pvPg=1, pvScale=1.5, pvRendering=false, pvPending=null;
+var pvEl=document.getElementById("pv");
+var pvCvs=document.getElementById("pvCanvas");
+var pvLoad=document.getElementById("pvLoad");
+var pvErr=document.getElementById("pvErr");
+
+function openPdf(url,title){
+  if(!window.pdfjsLib){
+    pvErr.innerHTML="PDF.js no esta disponible. Verifica tu conexion a internet.";
+    pvErr.style.display="block"; pvLoad.style.display="none";
+    pvEl.classList.add("open"); return;
+  }
+  document.getElementById("pvTitle").textContent=title||"Documento";
+  pvErr.style.display="none";
+  pvLoad.style.display="block";
+  pvEl.classList.add("open");
+  pvPg=1; pvScale=1.5; pvDoc=null;
+  /* remove old canvas */
+  var old=pvCvs.querySelector("canvas"); if(old)old.remove();
+  /* load */
+  pdfjsLib.getDocument(url).promise.then(function(doc){
+    pvDoc=doc;
+    document.getElementById("pvPgT").textContent=doc.numPages;
+    document.getElementById("pvPgIn").max=doc.numPages;
+    document.getElementById("pvPgIn").value=1;
+    pvLoad.style.display="none";
+    renderPage();
+  }).catch(function(err){
+    pvLoad.style.display="none";
+    pvErr.innerHTML="&#9888; Error al cargar el PDF.<br><small>"+esc(String(err))+"</small>"
+      +"<br><br>Si abriste el archivo directamente (file://), necesitas un servidor local:"
+      +"<br><code>python -m http.server 8000</code>"
+      +"<br>desde la carpeta del proyecto.";
+    pvErr.style.display="block";
+  });
+}
+
+function renderPage(){
+  if(!pvDoc) return;
+  if(pvRendering){pvPending=pvPg; return;}
+  pvRendering=true;
+  pvDoc.getPage(pvPg).then(function(page){
+    var vp=page.getViewport({scale:pvScale});
+    var c=pvCvs.querySelector("canvas");
+    if(!c){c=document.createElement("canvas");pvCvs.appendChild(c);}
+    c.width=vp.width; c.height=vp.height;
+    c.style.width=""; c.style.height="";
+    page.render({canvasContext:c.getContext("2d"),viewport:vp}).promise.then(function(){
+      pvRendering=false;
+      document.getElementById("pvPgN").textContent=pvPg;
+      document.getElementById("pvPgIn").value=pvPg;
+      if(pvPending!==null){var np=pvPending;pvPending=null;pvPg=np;renderPage();}
+    });
+  });
+}
+
+document.getElementById("pvClose").onclick=function(){pvEl.classList.remove("open");};
+document.getElementById("pvPrev").onclick=function(){if(pvDoc&&pvPg>1){pvPg--;renderPage();}};
+document.getElementById("pvNext").onclick=function(){if(pvDoc&&pvPg<pvDoc.numPages){pvPg++;renderPage();}};
+document.getElementById("pvPgIn").onchange=function(e){
+  var v=parseInt(e.target.value,10);
+  if(pvDoc&&v>=1&&v<=pvDoc.numPages){pvPg=v;renderPage();}
+};
+document.getElementById("pvZoomIn").onclick=function(){pvScale=Math.min(pvScale*1.25,6);renderPage();};
+document.getElementById("pvZoomOut").onclick=function(){pvScale=Math.max(pvScale/1.25,.4);renderPage();};
+document.getElementById("pvFitW").onclick=function(){
+  if(!pvDoc)return;
+  pvDoc.getPage(pvPg).then(function(p){
+    var vp=p.getViewport({scale:1});
+    pvScale=(pvCvs.clientWidth-16)/vp.width;
+    renderPage();
+  });
+};
+document.getElementById("pvFitP").onclick=function(){
+  if(!pvDoc)return;
+  pvDoc.getPage(pvPg).then(function(p){
+    var vp=p.getViewport({scale:1});
+    var sw=(pvCvs.clientWidth-16)/vp.width;
+    var sh=(pvCvs.clientHeight-16)/vp.height;
+    pvScale=Math.min(sw,sh);
+    renderPage();
+  });
+};
+document.getElementById("pvFS").onclick=function(){
+  if(document.fullscreenElement) document.exitFullscreen();
+  else pvEl.requestFullscreen().catch(function(){});
+};
+document.onkeydown=function(e){
+  if(!pvEl.classList.contains("open")) return;
+  if(e.key==="Escape") pvEl.classList.remove("open");
+  if(e.key==="ArrowLeft"&&pvDoc&&pvPg>1){pvPg--;renderPage();}
+  if(e.key==="ArrowRight"&&pvDoc&&pvPg<pvDoc.numPages){pvPg++;renderPage();}
+};
+
+/* ── INIT ── */
+render();
+</script>
+</body>
+</html>
