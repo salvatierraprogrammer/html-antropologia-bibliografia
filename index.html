@@ -171,7 +171,7 @@ main{padding:1.8rem 0 4rem}
     <div>
       <span class="hero-badge">2do Cuatrimestre 2026</span>
       <h1>Antropologia</h1>
-      <p class="hero-sub">Cronograma de estudio, lecturas y progreso</p>
+      <p class="hero-sub">Martes 17:40 a 20:20hs &mdash; Cronograma de estudio, lecturas y progreso</p>
     </div>
   </div>
   <div class="wrap gprog">
@@ -204,6 +204,12 @@ main{padding:1.8rem 0 4rem}
 
 <!-- ════════ MAIN ════════ -->
 <main class="wrap">
+  <div id="fileWarn" style="display:none;padding:.9rem 1.1rem;background:#fef3c7;border:1.5px solid #f59e0b;border-radius:12px;margin-bottom:1.4rem;font-size:.84rem;color:#92400e;line-height:1.5">
+    <strong>Abriste el archivo directamente (file://).</strong> Los PDFs pueden no cargar por restricciones del navegador.
+    Abri una terminal en la carpeta del proyecto y ejecutá:<br>
+    <code style="background:#fff;padding:.15rem .45rem;border-radius:4px;font-weight:700">python -m http.server 8000</code>
+    Luego abrí <a href="http://localhost:8000" style="color:#92400e;font-weight:700">http://localhost:8000</a>
+  </div>
   <h2 class="sec-title">Plan de la cursada</h2>
   <p class="sec-desc">Bibliografia obligatoria (cuenta para progreso), material complementario y material para clases. El estado se guarda automaticamente en este dispositivo.</p>
   <div id="root"></div>
@@ -768,6 +774,23 @@ var pvCvs=document.getElementById("pvCanvas");
 var pvLoad=document.getElementById("pvLoad");
 var pvErr=document.getElementById("pvErr");
 
+function fetchPdfBytes(url){
+  return new Promise(function(resolve,reject){
+    var xhr=new XMLHttpRequest();
+    xhr.open("GET",url,true);
+    xhr.responseType="arraybuffer";
+    xhr.onload=function(){
+      if(xhr.status===200||(xhr.status===0&&xhr.response)){
+        resolve(new Uint8Array(xhr.response));
+      }else{
+        reject(new Error("HTTP "+xhr.status));
+      }
+    };
+    xhr.onerror=function(){reject(new Error("XHR failed for "+url));};
+    xhr.send();
+  });
+}
+
 function openPdf(url,title){
   if(!window.pdfjsLib){
     pvErr.innerHTML="PDF.js no esta disponible. Verifica tu conexion a internet.";
@@ -779,10 +802,13 @@ function openPdf(url,title){
   pvLoad.style.display="block";
   pvEl.classList.add("open");
   pvPg=1; pvScale=1.5; pvDoc=null;
-  /* remove old canvas */
   var old=pvCvs.querySelector("canvas"); if(old)old.remove();
-  /* load */
-  pdfjsLib.getDocument(url).promise.then(function(doc){
+
+  fetchPdfBytes(url).then(function(data){
+    return pdfjsLib.getDocument({data:data}).promise;
+  }).catch(function(){
+    return pdfjsLib.getDocument(url).promise;
+  }).then(function(doc){
     pvDoc=doc;
     document.getElementById("pvPgT").textContent=doc.numPages;
     document.getElementById("pvPgIn").max=doc.numPages;
@@ -791,10 +817,13 @@ function openPdf(url,title){
     renderPage();
   }).catch(function(err){
     pvLoad.style.display="none";
+    var isFileUrl=location.protocol==="file:";
     pvErr.innerHTML="&#9888; Error al cargar el PDF.<br><small>"+esc(String(err))+"</small>"
-      +"<br><br>Si abriste el archivo directamente (file://), necesitas un servidor local:"
+      +(isFileUrl
+        ?"<br><br>Estas usando <b>file://</b>. Abre una terminal en la carpeta del proyecto y ejecuta:"
+        :"<br><br>Si el error persiste, verifica la ruta del archivo.")
       +"<br><code>python -m http.server 8000</code>"
-      +"<br>desde la carpeta del proyecto.";
+      +"<br>Luego abri <code>http://localhost:8000</code> en el navegador.";
     pvErr.style.display="block";
   });
 }
@@ -857,6 +886,10 @@ document.onkeydown=function(e){
 };
 
 /* ── INIT ── */
+if(location.protocol==="file:"){
+  var w=document.getElementById("fileWarn");
+  if(w) w.style.display="block";
+}
 render();
 </script>
 </body>
