@@ -46,6 +46,19 @@ img{max-width:100%;display:block}
 .gprog-bar{height:8px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden}
 .gprog-fill{height:100%;width:0;background:linear-gradient(90deg,#60a5fa,#fff);border-radius:99px;transition:width .4s ease}
 
+/* ── DOC QUICK BUTTONS ── */
+.doc-btns{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.2rem}
+.docbtn{flex:1;min-width:190px;display:flex;flex-direction:column;align-items:flex-start;gap:.15rem;padding:.8rem 1rem;border-radius:var(--r);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff;font-weight:700;font-size:.9rem;min-height:52px;transition:all .15s}
+.docbtn small{font-weight:600;font-size:.7rem;color:#93c5fd}
+.docbtn:hover{background:rgba(255,255,255,.2);transform:translateY(-1px)}
+
+/* ── UNIT QUICK NAV ── */
+.unit-nav{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;margin-top:1.4rem}
+.unit-nav-lbl{font-size:.7rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#93c5fd;margin-right:.2rem}
+.unit-nav a{display:inline-flex;align-items:center;padding:.42rem .85rem;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff;transition:background .15s}
+.unit-nav a small{font-weight:700;font-size:.75rem;letter-spacing:.02em}
+.unit-nav a:hover{background:rgba(255,255,255,.22)}
+
 /* ── NAV / CONTROLS ── */
 .nav{position:sticky;top:0;z-index:50;background:rgba(244,247,251,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.7rem 0}
 .nav-row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
@@ -65,7 +78,7 @@ main{padding:1.8rem 0 4rem}
 .sec-desc{color:var(--muted);font-size:.86rem;margin-bottom:1.5rem}
 
 /* ── UNIT ── */
-.unit{margin-bottom:2.4rem}
+.unit{margin-bottom:2.4rem;scroll-margin-top:96px}
 .unit-hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap}
 .unit-name{font-size:1.2rem;font-weight:700}
 .unit-topic{color:var(--muted);font-size:.84rem;margin:.35rem 0 .7rem}
@@ -172,6 +185,7 @@ main{padding:1.8rem 0 4rem}
 /* ── RESPONSIVE ── */
 @media(max-width:640px){
   .hero{padding:1.6rem 0 1.3rem}
+  .docbtn{min-width:100%}
   .hero h1{font-size:1.35rem}
   .nav-row{flex-direction:column}
   .filters{width:100%;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
@@ -223,6 +237,28 @@ main{padding:1.8rem 0 4rem}
     </div>
     <div class="gprog-bar"><div class="gprog-fill" id="gProgBar"></div></div>
   </div>
+  <div class="wrap doc-btns">
+    <button class="docbtn" data-pdf="BIBLIOGRAFIA-ANTROPO/PROGRAMA ANTROPOLOGÍA 2026.pdf" data-title="PROGRAMA ANTROPOLOGÍA 2026">
+      <span>Programa 2026</span>
+      <small>Contenidos de la materia</small>
+    </button>
+    <button class="docbtn" data-pdf="BIBLIOGRAFIA-ANTROPO/CRONOGRAMA 2C2026.pdf" data-title="CRONOGRAMA 2C2026">
+      <span>Cronograma 2C2026</span>
+      <small>Fechas y clases del cuatrimestre</small>
+    </button>
+    <button class="docbtn" data-pdf="BIBLIOGRAFIA-ANTROPO/Calendario Académico 2026.pdf" data-title="Calendario Académico 2026">
+      <span>Calendario Académico</span>
+      <small>Feriados e inicio de clases</small>
+    </button>
+  </div>
+  <nav class="wrap unit-nav" aria-label="Navegacion por unidades">
+    <span class="unit-nav-lbl">Ir a</span>
+    <a href="#unidad-1"><small>Unidad 1</small></a>
+    <a href="#unidad-2"><small>Unidad 2</small></a>
+    <a href="#unidad-3"><small>Unidad 3</small></a>
+    <a href="#unidad-4"><small>Unidad 4</small></a>
+    <a href="#unidad-5"><small>Unidad 5</small></a>
+  </nav>
 </header>
 
 <!-- ════════ NAV ════════ -->
@@ -741,6 +777,7 @@ function render(){
     var el=document.createElement("section");
     el.className="unit";
     el.dataset.ui=ui;
+    el.id="unidad-"+(ui+1);
     el.innerHTML=
       '<div class="unit-hdr"><div>'
       +'<div class="unit-name">'+unit.u+' \u2014 '+unit.t+'</div>'
