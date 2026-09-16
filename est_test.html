@@ -1877,5 +1877,203 @@ renderParcial();
 render();
 renderEstudio();
 </script>
+
+<script>
+(function(){
+  function out(s){
+    var d=document.getElementById('estTestOut')||document.createElement('div');
+    d.id='estTestOut';d.textContent=s;document.body.appendChild(d);
+  }
+  var W=window.innerWidth;
+  var fails=[], notes=[];
+  function a(c,m){if(!c)fails.push(m);}
+  function click(b){if(b)b.click();}
+  function key(k){document.dispatchEvent(new KeyboardEvent('keydown',{key:k,bubbles:true,cancelable:true}));}
+  function curConf(id){return estConf[id]||{};}
+  try{
+    var persist=(location.search.indexOf('persist')>=0);
+    if(!persist){localStorage.setItem('antropologia_parcial_sel','[]');localStorage.removeItem('antropologia_est_conf');}
+
+    renderEstudio();
+    var root=document.getElementById('estRoot');
+    var cards=root.querySelectorAll('.estc');
+    var bar=document.getElementById('estSumBar').textContent.replace(/\s+/g,' ').trim();
+    notes.push('bar='+bar);
+
+    if(persist){
+      a(bar.indexOf('3/84 dominados')>=0,'persist bar:'+bar);
+      a(estConf&&estConf['bellelli']&&estConf['bellelli'][1]==='o','persist bellelli');
+      a(estConf&&estConf['pita']&&estConf['pita'][1]==='o','persist pita');
+      a(estConf&&estConf['capitalismo']&&estConf['capitalismo'][0]==='o','persist capitalismo');
+    }
+
+    a(cards.length===12,'cards='+cards.length);
+    a(root.querySelectorAll('.est-class').length===5,'classes');
+    var ord=[];
+    root.querySelectorAll('.estc').forEach(function(c){ord.push(+c.querySelector('[data-est-open]').dataset.pos);});
+    a(ord.join(',')===[1,2,3,4,5,6,7,8,9,10,11,12].join(','),'orden='+ord.join(','));
+    a(bar.indexOf('12 fichas')>=0&&bar.indexOf('84 conceptos')>=0,'bar lemma '+bar);
+    if(!persist)a(bar.indexOf('0/84 dominados')>=0,'bar fresh '+bar);
+    a(root.querySelectorAll('.est-sel.na').length===2,'na x2');
+    a(root.querySelector('.est-sel.na').textContent.indexOf('Tema de la clase')===0,'na label');
+
+    // open pita (orden 5, clase 2) study
+    openEstudio(5,0,true);
+    var m=document.getElementById('estM');
+    a(m.classList.contains('open'),'modal open');
+    a(estMO.dataset.acc==='2','acc2='+estMO.dataset.acc);
+    a(document.getElementById('estStudyToggle').classList.contains('on'),'toggle on');
+    a(document.getElementById('estStudyToggle').textContent.indexOf('Modo estudio activo')>=0,'toggle txt');
+    var body=document.getElementById('estMBody');
+    a(body.querySelector('.est-flash'),'flash');
+    a(body.querySelector('.est-zq-d'),'shortcuts row');
+    if(W<641){a(getComputedStyle(body.querySelector('.est-zq-d'),null).display==='none','mob hides shortcuts');}
+    else{a(getComputedStyle(body.querySelector('.est-zq-d'),null).display==='block','desk shows shortcuts');}
+    if(W<641)a(getComputedStyle(document.querySelector('.est-m-d'),null).borderRadius==='0px','mob border0');
+
+    // flip
+    click(document.getElementById('estFc'));
+    a(document.getElementById('estFc').classList.contains('flip'),'flipped');
+    a(document.getElementById('estFlipHint').textContent.indexOf('volver')>=0,'hint flip');
+    click(document.getElementById('estFc'));
+    a(!document.getElementById('estFc').classList.contains('flip'),'unflip');
+
+    // mark r -> advance
+    var cid=estCard(5).id;
+    click(document.getElementById('estMBody').querySelector('[data-est-mark="r"]'));
+    a(estConf[cid]&&estConf[cid][0]==='r','mark r:'+JSON.stringify(estConf[cid]));
+    a(estCIdx===1,'advance1 c='+estCIdx);
+    body=document.getElementById('estMBody');
+    click(body.querySelector('[data-est-mark="o"]'));
+    a(estConf[cid][1]==='o','mark o');
+    a(estCIdx===2,'advance2');
+
+    // prev concept
+    body=document.getElementById('estMBody');
+    click(body.querySelector('[data-est-prevc]'));
+    a(estCIdx===1,'prev concept');
+
+    // shuffle chip on/off
+    body=document.getElementById('estMBody');
+    var sc=body.querySelector('[data-est-shuf]');
+    sc.click();
+    a(estShuf===true&&sc.classList.contains('on'),'shuf chip on');
+    a(estOrder.length===4,'shuf keeps 4:'+estOrder.length);
+    body=document.getElementById('estMBody');
+    body.querySelector('[data-est-shuf]').click();
+    a(estShuf===false,'shuf off');
+
+    // repaso: filters 'o' (index1) but keeps 'r' (index0)
+    body=document.getElementById('estMBody');
+    click(body.querySelector('[data-est-rep]'));
+    a(estRep===true,'rep on');
+    a(estOrder.length===3&&estOrder.indexOf(1)<0&&estOrder[0]===0,'rep filters o:'+estOrder.join(','));
+    body=document.getElementById('estMBody');
+    click(body.querySelector('[data-est-rep]'));
+    a(estRep===false,'rep off');
+
+    // capitalismo (orden 6, 4 conceptos) done-card
+    openEstudio(6,0,true);
+    var guard=0;
+    while(guard<12&&!document.getElementById('estMBody').querySelector('.est-done-card')){
+      var bb=document.getElementById('estMBody');
+      var mb=bb.querySelector('[data-est-mark="o"]');
+      if(mb)mb.click();else break;
+      guard++;
+    }
+    a(guard===4,'done4 guard='+guard);
+    var dc=document.getElementById('estMBody').querySelector('.est-done-card');
+    a(dc&&dc.textContent.indexOf('Terminaste los conceptos')>=0,'done card');
+    a(dc&&dc.querySelector('[data-est-reset]'),'reset btn');
+    a(dc&&dc.querySelector('[data-est-shuf-more]'),'shuf-more btn');
+
+    // done-card stats reflect 3 'o' + earlier marks
+    a(dc.textContent.indexOf('3 dominados')>=0||dc.textContent.indexOf('4 dominados')>=0,'stats: '+dc.textContent.replace(/\s+/g,' ').slice(0,80));
+
+    // reset restarts first concept
+    click(dc.querySelector('[data-est-reset]'));
+    a(!document.getElementById('estMBody').querySelector('.est-done-card'),'reset shows flash');
+
+    // capitalismo pdf button reaches COLONIALISMO.pdf
+    body=document.getElementById('estMBody');
+    var pbk=body.querySelector('[data-pdf]');
+    a(pbk&&pbk.dataset.pdf.indexOf('COLONIALISMO.pdf')>=0,'capitalismo pdf:'+(pbk?pbk.dataset.pdf:'none'));
+    click(pbk);
+    a(pvEl.classList.contains('open'),'pdf viewer open');
+    closePdfViewer();
+    a(!pvEl.classList.contains('open'),'pdf viewer close');
+
+    // keyboard
+    key('ArrowRight');
+    a(estCIdx===1,'kb right c='+estCIdx);
+    key('s');var s1=estShuf;
+    key('s');
+    a(s1===true&&estShuf===false,'kb shuffle toggle');
+    key('2');
+    a(estConf['capitalismo']&&estConf['capitalismo'][0]==='o','kb mark2');
+    key('Escape');
+    a(!m.classList.contains('open'),'kb esc close');
+
+    // view mode + pdf (lamas orden 4)
+    openEstudio(4,0,false);
+    body=document.getElementById('estMBody');
+    a(body.querySelector('.est-m-h2').textContent.indexOf('Marta Lamas')>=0,'view h2 lamas');
+    var pv=body.querySelector('[data-pdf]');
+    a(pv&&pv.dataset.pdf.toLowerCase().indexOf('.pdf')>0,'view pdf');
+    click(pv);
+    a(pvEl.classList.contains('open'),'view pdf open');
+    closePdfViewer();
+
+    // prev/next nav from ramos_c1 (orden 3)
+    openEstudio(3,0,false);
+    a(document.getElementById('estPrevTxt').textContent.length>0,'prev label');
+    a(document.getElementById('estPrevTxt').textContent.indexOf('Quir')>=0,'prev quiros');
+    a(document.getElementById('estNextTxt').textContent.indexOf('Marta Lamas')>=0,'next lamas');
+    click(document.getElementById('estNext'));
+    a(document.getElementById('estMTitle').textContent.indexOf('Marta Lamas')>=0,'next renders lamas');
+
+    // toggle view<->study
+    click(document.getElementById('estStudyToggle'));
+    a(document.getElementById('estMBody').querySelector('.est-flash'),'toggle to study');
+    click(document.getElementById('estStudyToggle'));
+    a(document.getElementById('estMBody').querySelector('.est-m-h2'),'toggle to view');
+    click(document.getElementById('estMClose'));
+    a(!m.classList.contains('open'),'closed via X');
+
+    // badge sync (pita parIdx 3)
+    estToggleSel(3);
+    a(JSON.parse(localStorage.getItem('antropologia_parcial_sel')).join(',')==='3','sel3 stored');
+    a(document.getElementById('estSelSum').textContent.indexOf('1/10')===0,'selSum='+document.getElementById('estSelSum').textContent);
+    var rb=document.getElementById('estRoot').querySelector('.est-sel[data-par="3"]');
+    a(rb&&rb.classList.contains('on'),'root badge synced');
+
+    // search jirafa -> bellelli
+    var si=document.getElementById('estSearch');
+    si.value='jirafa';estQ='jirafa';renderEstudio();
+    var rr=document.getElementById('estRoot').querySelectorAll('.est-r');
+    a(rr.length>0,'search rows='+rr.length);
+    click(rr[0].querySelector('[data-est-open]'));
+    a(document.getElementById('estMTitle').textContent.indexOf('Bellelli')>=0,'search opens bellelli');
+    click(document.getElementById('estMClose'));
+
+    // empty + restore
+    estQ='zzyzzx';renderEstudio();
+    a(document.getElementById('estRoot').querySelector('.est-empty'),'search empty');
+    estQ='';renderEstudio();
+    a(document.getElementById('estRoot').querySelectorAll('.estc').length===12,'restore cards');
+    a(document.getElementById('estSelSum').textContent.indexOf('1/10')===0,'selSum kept');
+
+    // seed known marks for the cross-reload persistence pass
+    if(!persist){
+      estConf['bellelli']={1:'o'};
+      estConfSave();
+    }
+
+    out((W<641?'mobile':'desktop')+';'+(fails.length?('FAIL: '+fails.join(' | ')):('PASS all; cards='+cards.length))+'; '+notes.join(' '));
+  }catch(e){
+    out((W<641?'mobile':'desktop')+';CRASH: '+e.message+' @'+((e.stack||'').split(String.fromCharCode(10))[1]||''));
+  }
+})();
+</script>
 </body>
 </html>

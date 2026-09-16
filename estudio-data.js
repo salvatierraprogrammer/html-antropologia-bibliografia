@@ -46,21 +46,31 @@ cards:[
   {c:"Momentos constitutivos",
    e:"Los tres grandes momentos históricos en que la disciplina se constituyó como ciencia.",
    ej:"Evolucionismo (fines s. XIX) → teorías de la diversidad (entreguerras) → antropologías de la desigualdad (posguerra).",
-   p:"¿Qué imagen del otro construyó cada momento?"}
+   p:"¿Qué imagen del otro construyó cada momento?"},
+  {c:"Qué hace la antropología",
+   e:"La Introducción define la disciplina por su objeto (otredad) + su técnica (observación participante) + su historia de constitución: eso es, en resumen, lo que hace la antropología.",
+   ej:"El otro no se descubre como dato: se construye científicamente según cada teoría dominante.",
+   p:"¿Qué hace la antropología y cómo se define?"},
+  {c:"Distribución del conocimiento de las ciencias sociales",
+   e:"El saber sobre lo social se reparte en una pluralidad de ciencias sociales (historia, sociología, economía, ciencia política, antropología...); cada una recorta su objeto de un modo específico.",
+   ej:"El mismo hecho social puede tratarse desde varias ciencias; a la antropología le toca la pregunta por el otro.",
+   p:"¿Cómo se distribuye el conocimiento de las ciencias sociales y qué lugar ocupa ahí la antropología?"}
  ],
  autores:[
   {n:"Boivin, Rosato y Arribas",a:"Autores de la Introducción de Constructores de Otredad; plantean que la disciplina se define por objeto + técnica + historia del campo."}
  ],
- parcial:[
-  "Saber definir la Antropología por su objeto (otredad), su técnica (observación participante) y su historia de constitución.",
+parcial:[
+   "Temario del parcial: qué hace la antropología, cómo se distribuye el conocimiento de las ciencias sociales y la historia de su construcción (3 períodos).",
+   "Saber definir la Antropología por su objeto (otredad), su técnica (observación participante) y su historia de constitución.",
   "Manejar la secuencia diferencia → diversidad → desigualdad: hilo general de todo el parcial.",
   "Se conecta con Boivin Cap. 1 (el otro como diferente) y Boivin Cap. 2 (el otro como diverso)."
  ],
- preguntas:[
-  "¿Cuál es el objeto y el método de la Antropología? ¿Alcanzan por separado para definirla?",
-  "¿Qué significa afirmar que el otro cultural es una construcción científica y no un dato empírico?",
-  "¿Cuáles son los tres momentos constitutivos y qué imagen del otro construyó cada uno?"
- ]
+preguntas:[
+   "¿Qué hace la antropología? Defina su objeto, su técnica y su lugar en las ciencias sociales.",
+   "¿Cómo se distribuye el conocimiento de las ciencias sociales? ¿Qué recorta la antropología?",
+   "Historia de la construcción de la antropología: ¿cuáles son los tres períodos y qué imagen del otro construyó cada uno?",
+   "¿Qué significa afirmar que el otro cultural es una construcción científica y no un dato empírico?"
+  ]
 },
 {
  id:"quiroz",clase:1,orden:2,
@@ -109,13 +119,15 @@ cards:[
   {n:"Mariza Peirano",a:"Fuente de la noción de instinto etnográfico (2014)."},
   {n:"Ludmila da Silva Catela",a:"Fuente de las relaciones generosas entre mundos académicos y de acción política (2019)."}
  ],
- parcial:[
-  "Tema de la guía del parcial: la intervención antropológica y sus relaciones con la investigación.",
+parcial:[
+   "En el temario del parcial figura como 'Antropología Social' — el quehacer actualizado de la disciplina.",
+   "Tema de la guía del parcial: la intervención antropológica y sus relaciones con la investigación.",
   "Saber explicar por qué investigar ya es intervenir y cómo se resignifica la pregunta ¿para qué sirve unx antropólogx?.",
   "Relacionable con la definición de la disciplina (Boivin) y con la mirada comprometida y desnaturalizadora."
  ],
- preguntas:[
-  "¿Para qué sirve unx antropólogx según Quirós? ¿Qué responde al discurso que desvaloriza lo aplicado?",
+preguntas:[
+   "Antropología Social: ¿cuál es el quehacer actualizado de la antropología según Quirós?",
+   "¿Para qué sirve unx antropólogx según Quirós? ¿Qué responde al discurso que desvaloriza lo aplicado?",
   "¿Qué relación establece entre investigación e intervención?",
   "¿Qué términos usa el texto para las modalidades de intervención y qué diferencias plantean?"
  ],
@@ -165,11 +177,11 @@ cards:[
  autores:[
   {n:"Mariano Ramos, Sebastián Valverde, Analía García y Diego Lewin",a:"Autores del texto; presentan conceptos de ciencia, teoría, hipótesis, paradigma y epistemología, además de ramas y escuelas."}
  ],
- parcial:[
-  "Tema de la guía del parcial para esta clase: ramas de la antropología.",
-  "El mismo texto se trabaja en la Clase 5 con el tema Síntesis de ramas y teorías (ahí tiene ítem propio en la tarjeta del parcial).",
-  "En Clase 1 no tiene ítem propio en la bibliografía del parcial."
- ],
+parcial:[
+   "Tema del parcial para esta clase: ramas de la antropología (Ramos).",
+   "Este texto también se estudia en la Clase 5 con el tema Síntesis de ramas y teorías (ahí tiene ítem propio en la tarjeta del parcial).",
+   "En la bibliografía del parcial figura el ítem de la Clase 5; las ramas se estudian con el mismo PDF."
+  ],
  preguntas:[
   "¿Qué es una rama de la antropología y qué implica cada especialidad?",
   "¿Cuáles son las ramas y qué estudia cada una?",
@@ -273,7 +285,15 @@ cards:[
   {c:"La mirada antropológica",
    e:"Forma de mirar lo social que desnaturaliza: pone entre paréntesis lo que parece obvio para analizarlo.",
    ej:"Estudiar las instituciones como producciones sociales y no como datos dados.",
-   p:"¿Qué aporta la mirada antropológica al estudio de las relaciones sociales?"}
+   p:"¿Qué aporta la mirada antropológica al estudio de las relaciones sociales?"},
+  {c:"Alteridad, asombro y curiosidad",
+   e:"La mirada antropológica nace del asombro y la curiosidad ante lo otro distinto; la alteridad es el punto de partida de la pregunta antropológica.",
+   ej:"Poner entre paréntesis lo obvio exige volver a preguntarse por lo que el propio medio naturaliza.",
+   p:"¿Qué papel juegan el asombro y la curiosidad frente a la alteridad?"},
+  {c:"Relación nosotros-otros",
+   e:"La antropología interroga el vínculo que el nosotros establece con los otros; desnaturalizar muestra que ese vínculo también es una construcción histórica.",
+   ej:"Lo que aparece natural (la policía, los cubiertos) expresa el orden de un nosotros que tiende a imponerlo como universal.",
+   p:"¿Cómo se plantea la relación nosotros-otros en la mirada antropológica?"}
  ],
  autores:[
   {n:"María Victoria Pita y María Josefina Martínez",a:"Autores del TP1; plantean la desnaturalización como ejercicio central de la mirada antropológica."},
@@ -281,18 +301,65 @@ cards:[
   {n:"Gustavo Lins Ribeiro",a:"Otra fuente del concepto de conciencia práctica / desnaturalización."},
   {n:"Tada",a:"Ejemplo trabajado en el texto (gestualidad japonesa: estar sentado vs. de pie; la silla como símbolo de autoridad)."}
  ],
+parcial:[
+   "Temario: desnaturalización (operación que trabaja en el doble vínculo natural/social), alteridad-asombro-curiosidad y relación nosotros-otros.",
+   "Tema de la guía del parcial: desnaturalizar (TP1). Saber definir desnaturalización y naturalización con ejemplos.",
+   "Se conecta con Lamas (género naturalizado) y con la definición de la disciplina (Boivin)."
+  ],
+preguntas:[
+   "¿Qué es la desnaturalización? Explique la operación que trabaja en ese doble vínculo (lo natural / lo social construido).",
+   "¿Qué es la naturalización? Dé ejemplos.",
+   "¿Qué papel juegan la alteridad, el asombro y la curiosidad en la mirada antropológica?",
+   "¿Cómo se plantea la relación nosotros-otros?",
+   "¿Qué rol juega la conciencia práctica en la naturalización?"
+  ]
+},
+{
+ id:"capitalismo",clase:3,orden:6,
+ autor:"Clase de Capitalismo",
+ texto:"Procesos históricos y racionalidad científica",
+ fase:"Capitalismo, imperialismo, colonialismo y Siglo de las Luces",
+ f:BP+"/UNIDAD_II/Complementaria/CHIRIGUINI - COLONIALISMO.pdf",
+ paginas:"material de la clase",
+ parIdx:null,
+ saber:[
+  "Para pensar el evolucionismo hay que atender a cómo ciertos procesos históricos configuran la noción de proceso = evolución: la expansión del capitalismo (en sus distintas etapas) pone en contacto a Occidente con pueblos 'otros'.",
+  "El imperialismo y el colonialismo son el marco histórico del encuentro colonial sobre el que trabaja la antropología decimonónica.",
+  "El Siglo de las Luces instala la idea de la razón como motor del conocimiento científico: la racionalidad pasa a pensarse como el principio que consolida el pensamiento científico.",
+  "El contexto (revolución industrial y expansión de Occidente, con las '4 etapas' del capitalismo) explica que el Nosotros industrial se lea a sí mismo como la cúspide del progreso."],
+ conceptos:[
+  {c:"Racionalidad como motor del pensamiento científico",
+   e:"Idea consolidada desde el Siglo de las Luces: el conocimiento válido se construye por la razón y no por la tradición ni la fe; esa confianza en la razón es la base desde la que se piensan el progreso y el evolucionismo.",
+   ej:"El pensamiento científico moderno se ordena según la idea de que la racionalidad explica y ordena el mundo.",
+   p:"¿Cómo se consolida la idea de que la racionalidad es el motor del pensamiento científico?"},
+  {c:"Capitalismo y sus etapas",
+   e:"Sistema económico en expansión desde fines de la Edad Media, con distintas etapas históricas; su expansión mundial pone en contacto y en desigualdad a distintas sociedades (la clase trabaja las '4 etapas').",
+   ej:"El encuentro colonial supone sociedades desiguales conectadas por la expansión capitalista.",
+   p:"¿Qué procesos históricos configuran la posibilidad de pensar la evolución?"},
+  {c:"Imperialismo y colonialismo",
+   e:"Formas de expansión y dominación de Occidente sobre otros pueblos que enmarcan la producción del saber antropológico decimonónico.",
+   ej:"La relación colonial explotador-explotado será la base de la crítica posterior de la disciplina (vincular con Sinisi).",
+   p:"¿Qué relación guardan el imperialismo y el colonialismo con el surgimiento de la antropología?"},
+  {c:"Siglo de las Luces",
+   e:"Período del siglo XVIII que consolida la confianza en la razón y en el progreso; sienta la base de la cientificidad que retomará el evolucionismo.",
+   ej:"De la Ilustración proviene la idea de que la humanidad avanza hacia lo racional; el evolucionismo la trasladará a la cultura.",
+   p:"¿Por qué se considera al Siglo de las Luces clave para el pensamiento evolucionista?"}],
+ autores:[
+  {n:"Material de la clase",a:"Temas trabajados en el aula: las '4 etapas' del capitalismo, el imperialismo, el colonialismo y el Siglo de las Luces como marco de la racionalidad científica."}
+ ],
  parcial:[
-  "Tema de la guía del parcial: desnaturalizar (TP1). Saber definir desnaturalización y naturalización con ejemplos.",
-  "Se conecta con Lamas (género naturalizado) y con la definición de la disciplina (Boivin)."
+  "Tema del parcial: cómo se configuran determinados procesos históricos para pensar el 'proceso = evolución'.",
+  "Segundo tema: cómo se consolida la idea de que la racionalidad es el motor del pensamiento científico.",
+  "Vincular con Bellelli (Darwin) y con Boivin Cap. 1 (evolucionismo): el contexto histórico explica la pregunta evolucionista."
  ],
  preguntas:[
-  "¿Qué es desnaturalizar y qué es la naturalización? Dá ejemplos.",
-  "¿Qué rol juega la conciencia práctica en la naturalización?",
-  "¿Por qué se afirma que no existen prácticas ni instituciones naturales?"
+  "¿Cómo se configuran determinados procesos históricos para pensar el 'proceso = evolución'?",
+  "¿Cómo se consolida la idea de que la racionalidad es el motor del pensamiento científico?",
+  "¿Qué papel juegan el capitalismo, el imperialismo, el colonialismo y el Siglo de las Luces en ese marco?"
  ]
 },
 {
- id:"boivin_cap1",clase:3,orden:6,
+ id:"boivin_cap1",clase:3,orden:7,
  autor:"Boivin",
  texto:"Capítulo 1 — La construcción del otro por la diferencia, pp. 27-33",
  fase:"¿Cómo se consolidó el pensamiento evolucionista?",
@@ -342,13 +409,15 @@ cards:[
   {n:"E. B. Tylor",a:"Autor de Primitive Culture (1871); definición de cultura y método comparativo."},
   {n:"L. H. Morgan",a:"Autor de La sociedad primitiva (1877); modelo estadial y dos lógicas evolutivas (materiales y no materiales)."}
  ],
- parcial:[
-  "Tema de la guía del parcial: ¿cómo se consolidó el pensamiento evolucionista?.",
+parcial:[
+   "Temario del parcial: cómo se pensó la antropología evolucionista.",
+   "Tema de la guía del parcial: ¿cómo se consolidó el pensamiento evolucionista?.",
   "Núcleo: el modelo estadial, la definición tyloriana de cultura, la explicación de semejanzas y diferencias.",
   "Se conecta con la Introducción (otro por diferencia), con Bellelli (qué es evolución) y con la crítica de Boas (particularismo)."
  ],
- preguntas:[
-  "¿Cuáles son los tres interrogantes del evolucionismo y cuál es el fundante?",
+preguntas:[
+   "¿Cómo se pensó la antropología evolucionista?",
+   "¿Cuáles son los tres interrogantes del evolucionismo y cuál es el fundante?",
   "Explique el modelo estadial y sus tres ordenamientos (acumulativo, temporal, causal).",
   "¿Qué es la supervivencia y cómo se usa para leer al otro?",
   "¿Cómo explica el evolucionismo las semejanzas culturales?",
@@ -356,7 +425,7 @@ cards:[
  ]
 },
 {
- id:"bellelli",clase:3,orden:7,
+ id:"bellelli",clase:3,orden:8,
  autor:"Bellelli y Scheinsohn",
  texto:"¿De qué hablamos cuando hablamos de evolución? — texto extractado",
  fase:"Antropología evolucionista",
@@ -399,7 +468,11 @@ cards:[
   {c:"Evolución como proceso y como teoría",
    e:"Distinción del texto: evolución como proceso que opera en distintos niveles de organización de la materia, y como teoría que explica esos procesos (teorías específicas para cada nivel).",
    ej:"La teoría de la evolución del universo no explica por sí sola la historia de la vida en la Tierra.",
-   p:"¿Qué diferencia hay entre evolución como proceso y como teoría?"}
+   p:"¿Qué diferencia hay entre evolución como proceso y como teoría?"},
+  {c:"Antropólogos evolucionistas",
+   e:"E. Tylor (Primitive Culture, 1871) y L. H. Morgan (La sociedad primitiva, 1877): los autores que aplican la idea de evolución al estudio de la cultura y de las sociedades.",
+   ej:"Su obra modela los estadios del desarrollo cultural que trabaja Boivin Cap. 1.",
+   p:"¿Quiénes fueron los principales antropólogos evolucionistas y qué aportaron?"}
  ],
  autores:[
   {n:"Cristina Bellelli y V. Scheinsohn",a:"Autores del texto (extractado, 1996); recorren la historia de la idea de evolución hasta sus discusiones actuales."},
@@ -407,20 +480,23 @@ cards:[
   {n:"Jean Baptiste Lamarck",a:"Primer formulador del transformismo (herencia de caracteres adquiridos); rompe el fijismo."},
   {n:"Eldredge y Gould",a:"Teoría de los Equilibrios Puntuados (1972)."}
  ],
- parcial:[
-  "Tema de la guía del parcial: antropología evolucionista y el debate naturaleza-cultura.",
+parcial:[
+   "Temario: discusión de Darwin y sus antecedentes; los antropólogos evolucionistas.",
+   "Tema de la guía del parcial: antropología evolucionista y el debate naturaleza-cultura.",
   "Clave para no confundir evolución con progreso y para entender la base científica del evolucionismo (Boivin Cap. 1)."
  ],
- preguntas:[
-  "¿Por qué se afirma que el concepto de evolución es anterior a Darwin?",
-  "¿Qué rompe Lamarck y qué propone?",
-  "¿Cuál es la innovación de Darwin (1859)?",
-  "¿Qué significa que la evolución carece de dirección?"
- ],
+preguntas:[
+   "Discusión sobre Darwin: ¿cuáles son sus antecedentes? Explicá brevemente.",
+   "¿Por qué se afirma que el concepto de evolución es anterior a Darwin?",
+   "¿Qué rompe Lamarck y qué propone?",
+   "¿Cuál es la innovación de Darwin (1859)?",
+   "¿Qué significa que la evolución carece de dirección?",
+   "¿Quiénes fueron los antropólogos evolucionistas (Tylor y Morgan) y qué aportaron?"
+  ],
  nota:"El PDF está escaneado y se digitalizó por OCR; algunos tramos quedaron incompletos, por lo que conviene repasar este tema con los materiales de la Unidad II."
 },
 {
- id:"boivin_cap2",clase:4,orden:8,
+ id:"boivin_cap2",clase:4,orden:9,
  autor:"Boivin",
  texto:"Capítulo 2 — La construcción del otro por la diversidad",
  fase:"La construcción del otro por la diversidad",
@@ -476,13 +552,16 @@ cards:[
   {n:"Claude Lévi-Strauss",a:"Estructuralismo francés: estructuras inconscientes universales; la prohibición del incesto como paso de la naturaleza a la cultura (1969)."},
   {n:"Émile Durkheim",a:"Explicación de la prohibición del incesto apelando a la supervivencia (vicio evolucionista según Lévi-Strauss)."}
  ],
- parcial:[
-  "Tema de la guía del parcial: la diversidad y las explicaciones de Malinowski y Lévi-Strauss.",
+parcial:[
+   "Temario: consolidación de la disciplina / antropología clásica — referencia a Malinowski y Lévi-Strauss.",
+   "Tema de la guía del parcial: la diversidad y las explicaciones de Malinowski y Lévi-Strauss.",
   "Comparar la explicación funcionalista y la estructuralista de la prohibición del incesto (pregunta tipo parcial).",
   "Saber el pasaje del otro diferente (Cap. 1) al otro diverso (Cap. 2) y la crítica compartida al evolucionismo."
  ],
- preguntas:[
-  "¿Qué cambia en la construcción del otro entre el evolucionismo y las teorías de entreguerras?",
+preguntas:[
+   "¿En qué consistió la consolidación de la disciplina (antropología clásica)?",
+   "¿Qué lugar ocupan Malinowski y Lévi-Strauss en la referencia de la antropología clásica?",
+   "¿Qué cambia en la construcción del otro entre el evolucionismo y las teorías de entreguerras?",
   "Explique la explicación funcionalista de las instituciones.",
   "¿Qué explica la prohibición del incesto para Lévi-Strauss y por qué es el pasaje de la naturaleza a la cultura?",
   "Compare la explicación funcionalista y la estructuralista de la prohibición del incesto.",
@@ -491,7 +570,7 @@ cards:[
  nota:"Este texto contiene además el desarrollo de Lévi-Strauss sobre el paso naturaleza-cultura que excede lo requerido por la guía del parcial."
 },
 {
- id:"hernandez",clase:4,orden:9,
+ id:"hernandez",clase:4,orden:10,
  autor:"Hernández Soriano y Martínez",
  texto:"El particularismo histórico — pp. 141-152",
  fase:"El particularismo histórico",
@@ -557,7 +636,7 @@ cards:[
  ]
 },
 {
- id:"ramos_c5",clase:5,orden:10,
+ id:"ramos_c5",clase:5,orden:11,
  autor:"Ramos, Valverde, García y Lewin",
  texto:"La antropología: algunos conceptos, ramas y escuelas — pp. 19-37",
  fase:"Síntesis de ramas y teorías",
@@ -628,7 +707,7 @@ cards:[
  ]
 },
 {
- id:"sinisi",clase:5,orden:11,
+ id:"sinisi",clase:5,orden:12,
  autor:"Liliana Sinisi",
  texto:"Teorías contemporáneas en Antropología — pp. 171-179",
  fase:"Antropología contemporánea",
