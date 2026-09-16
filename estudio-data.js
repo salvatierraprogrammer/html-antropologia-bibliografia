@@ -1,0 +1,710 @@
+/* Línea de estudio del primer parcial — datos construidos desde los 10 PDFs */
+window.ESTUDIO = (function(){
+"use strict";
+var BP="BIBLIOGRAFIA-ANTROPO/bibliograf\u00eda";
+return {
+clases:[
+{n:1,t:"La antropología como disciplina científica — otredad, intervención y ramas"},
+{n:2,t:"La mirada antropológica — género como cultura y desnaturalización"},
+{n:3,t:"Evolución y pensamiento evolucionista"},
+{n:4,t:"Diversidad y escuelas clásicas — estructuralismo, funcionalismo y particularismo"},
+{n:5,t:"Teorías, ramas y antropología contemporánea"}
+],
+cards:[
+{
+ id:"boivin_intro",clase:1,orden:1,
+ autor:"Boivin, Rosato y Arribas",
+ texto:"Introducción — Constructores de Otredad, pp. 7-13",
+ fase:"Introducción — períodos y construcción de la disciplina",
+ f:BP+"/UNIDAD_I/boivin-rosato- arribas INTROD..pdf",
+ paginas:"pp. 7-13",
+ parIdx:0,
+ saber:[
+  "La Antropología no se define solo por su objeto (otredad, alteridad, diversidad cultural) ni solo por su método (observación participante): se define por la historia de su constitución como campo científico.",
+  "El \"otro cultural\" no es un dato empírico: es un objeto construido científicamente por cada teoría dominante.",
+  "La ciencia es acumulativa pero conflictiva: reúne aportes de distintos momentos históricos que no suman en línea recta.",
+  "Tres momentos constitutivos: fines del s. XIX (evolucionismo, el otro como diferente), entre las guerras (pluralidad de teorías, el otro como diverso), posguerra (antropologías otras, el otro como desigual).",
+  "El encuentro con lo distinto deja de ser asombro ingenuo y pasa a ser regulado por el campo científico (contexto: revolución industrial y expansión de Occidente)."
+ ],
+ conceptos:[
+  {c:"Otredad / Alteridad",
+   e:"Núcleo del objeto de la Antropología: la construcción de la imagen del otro culturalmente distinto.",
+   ej:"Cada teoría construyó su propio otro: diferente (evolucionismo), diverso (entreguerras), desigual (antropologías poscoloniales).",
+   p:"¿Por qué se dice que el otro cultural es un objeto construido y no un hecho empírico?"},
+  {c:"Observación participante",
+   e:"Técnica clásica del trabajo de campo: el antropólogo participa de la vida de la comunidad para conocerla desde adentro.",
+   ej:"Es la técnica distintiva del quehacer antropológico, pero no alcanza por sí sola para definir la disciplina.",
+   p:"¿Basta la observación participante para definir a la Antropología? ¿Por qué?"},
+  {c:"Construcción científica del objeto",
+   e:"El otro es un modelo que cada teoría dominante construye según sus reglas; no es un dato que se descubre.",
+   ej:"Diferencia (evolucionismo) → diversidad (entreguerras) → desigualdad (posguerra).",
+   p:"¿Qué diferencia hay entre diferencia, diversidad y desigualdad como construcciones del otro?"},
+  {c:"Ciencia acumulativa y conflictiva",
+   e:"Los componentes actuales de la disciplina provienen de teorías de distintos momentos históricos, en tensión entre sí.",
+   ej:"En la antropología conviven restos del evolucionismo con teorías críticas posteriores.",
+   p:"¿En qué sentido la acumulación del conocimiento es conflictiva?"},
+  {c:"Momentos constitutivos",
+   e:"Los tres grandes momentos históricos en que la disciplina se constituyó como ciencia.",
+   ej:"Evolucionismo (fines s. XIX) → teorías de la diversidad (entreguerras) → antropologías de la desigualdad (posguerra).",
+   p:"¿Qué imagen del otro construyó cada momento?"}
+ ],
+ autores:[
+  {n:"Boivin, Rosato y Arribas",a:"Autores de la Introducción de Constructores de Otredad; plantean que la disciplina se define por objeto + técnica + historia del campo."}
+ ],
+ parcial:[
+  "Saber definir la Antropología por su objeto (otredad), su técnica (observación participante) y su historia de constitución.",
+  "Manejar la secuencia diferencia → diversidad → desigualdad: hilo general de todo el parcial.",
+  "Se conecta con Boivin Cap. 1 (el otro como diferente) y Boivin Cap. 2 (el otro como diverso)."
+ ],
+ preguntas:[
+  "¿Cuál es el objeto y el método de la Antropología? ¿Alcanzan por separado para definirla?",
+  "¿Qué significa afirmar que el otro cultural es una construcción científica y no un dato empírico?",
+  "¿Cuáles son los tres momentos constitutivos y qué imagen del otro construyó cada uno?"
+ ]
+},
+{
+ id:"quiroz",clase:1,orden:2,
+ autor:"Julieta Quirós",
+ texto:"¿Para qué sirve unx antropólogx? — texto completo",
+ fase:"La intervención antropológica y sus relaciones con la investigación",
+ f:BP+"/UNIDAD_I/Quiros-Para_que_sirve_unx_antropologx.pdf",
+ paginas:"49 páginas",
+ parIdx:1,
+ saber:[
+  "No hay que cederle al discurso dominante la pregunta por la utilidad de la antropología, ni la oposición desvalorizante entre lo aplicado y lo básico.",
+  "La investigación es inseparable de la intervención: todo conocimiento del mundo social interviene en ese mundo. Quirós retoma a Sabina Frederic (intervención del conocimiento antropológico) y propone la noción de intervención antropológica.",
+  "El texto se apoya en una investigación propia en el Valle de Traslasierra (Córdoba), donde la autora es a la vez investigadora y vecina.",
+  "Reconstruye el caso de la desaparición de Delia Gerónimo Polijo (La Paz, Dpto. San Javier, 18/09/2018; hipótesis de femicidio) para pensar la práctica antropológica en contextos de violencia y desigualdad.",
+  "Discute un repertorio de términos: antropología aplicada, gestión, investigación-acción, investigación colaborativa, investigación militante, transferencia/extensión."
+ ],
+ conceptos:[
+  {c:"Intervención antropológica",
+   e:"Propuesta de Quirós: el conocimiento producido por la investigación interviene en el mundo social; no existe investigación pura que no intervenga.",
+   ej:"Una etnografía en una comunidad no solo describe: construye relaciones, sentidos y posiciones (doble condición de investigadora-vecina).",
+   p:"¿Qué entiende Quirós por intervención antropológica?"},
+  {c:"Intervención del conocimiento antropológico",
+   e:"Concepto de Sabina Frederic que Quirós retoma: el saber antropológico interviene en el mundo aun cuando no se lo diseñe como aplicado.",
+   ej:"La decisión de qué preguntar, qué mostrar y a quién es ya una forma de intervenir.",
+   p:"¿Qué aporta Frederic al debate sobre la utilidad de la antropología?"},
+  {c:"Investigación-acción, colaborativa y militante",
+   e:"Modalidades de producción de conocimiento comprometido con los grupos estudiados, que cuestionan la separación rígida entre investigar y actuar.",
+   ej:"Trabajar junto a las personas y colectivos sobre problemas concretos de su vida cotidiana.",
+   p:"¿Cómo se diferencian estas modalidades de la investigación académica clásica?"},
+  {c:"Aplicada vs. básica",
+   e:"Dicotomía que el texto discute: la desvalorización de lo aplicado es parte del problema, no una verdad de la disciplina.",
+   ej:"Para Quirós, la pregunta ¿para qué servimos? se responde rejerarquizando la interdependencia entre investigar e intervenir.",
+   p:"¿Por qué la autora no acepta la oposición entre antropología básica y aplicada?"},
+  {c:"Instinto etnográfico",
+   e:"Noción de Mariza Peirano (2014): cierta sensibilidad etnográfica del quehacer antropológico ligada a la pregunta por los propios problemas.",
+   ej:"La etnografía como forma de mirar el mundo social antes que como simple técnica.",
+   p:"¿Qué describe Peirano con la noción de instinto etnográfico?"},
+  {c:"Relaciones generosas entre academia y acción política",
+   e:"Idea de Ludmila da Silva Catela (2019): la antropología gana cuando circulan conocimiento, vínculos y compromisos entre el mundo académico y los espacios de acción política.",
+   ej:"Investigación y militancia que se alimentan mutuamente sin confundirse.",
+   p:"¿Qué entiende da Silva Catela por relaciones generosas entre el mundo académico y el de la acción política?"}
+ ],
+ autores:[
+  {n:"Julieta Quirós",a:"Autora del texto; propone la intervención antropológica y cultiva las interdependencias entre investigación e intervención."},
+  {n:"Sabina Frederic",a:"Fuente de la noción de intervención del conocimiento antropológico."},
+  {n:"Mariza Peirano",a:"Fuente de la noción de instinto etnográfico (2014)."},
+  {n:"Ludmila da Silva Catela",a:"Fuente de las relaciones generosas entre mundos académicos y de acción política (2019)."}
+ ],
+ parcial:[
+  "Tema de la guía del parcial: la intervención antropológica y sus relaciones con la investigación.",
+  "Saber explicar por qué investigar ya es intervenir y cómo se resignifica la pregunta ¿para qué sirve unx antropólogx?.",
+  "Relacionable con la definición de la disciplina (Boivin) y con la mirada comprometida y desnaturalizadora."
+ ],
+ preguntas:[
+  "¿Para qué sirve unx antropólogx según Quirós? ¿Qué responde al discurso que desvaloriza lo aplicado?",
+  "¿Qué relación establece entre investigación e intervención?",
+  "¿Qué términos usa el texto para las modalidades de intervención y qué diferencias plantean?"
+ ],
+ nota:"Este texto contiene además desarrollo del caso Delia, la vida en Traslasierra y reflexiones de práctica profesional que exceden la guía del primer parcial."
+},
+{
+ id:"ramos_c1",clase:1,orden:3,
+ autor:"Ramos, Valverde, García y Lewin",
+ texto:"La antropología: algunos conceptos, ramas y escuelas — pp. 19-37",
+ fase:"Ramas de la antropología",
+ f:BP+"/UNIDAD_III/Ramos-et al-Conceptos-Ramas-y-Escuelas.pdf",
+ paginas:"pp. 19-37",
+ parIdx:null,
+ saber:[
+  "La antropología se concibe como un árbol con un tronco común y distintas ramas, cada una con campo, objeto, metodologías, técnicas y problemas propios.",
+  "Ramas (tendencia de América, incluida la Argentina): antropología social/cultural o etnología, arqueología, lingüística antropológica y antropología biológica.",
+  "La tendencia inglesa considera tres ramas, dejando a la lingüística como disciplina científica independiente.",
+  "Antropología cultural: descripción y análisis de las culturas (tradiciones socialmente aprendidas); la etnografía es su subdisciplina descriptiva, asociada al trabajo de campo.",
+  "Arqueología: recupera vestigios materiales (registro arqueológico). Lingüística antropológica: diversidad e historia de las lenguas. Antropología biológica: base biológica, evolución humana y variaciones hereditarias."
+ ],
+ conceptos:[
+  {c:"Ramas de la antropología",
+   e:"Campos que conforman la antropología general (tronco común) con incumbencias disciplinarias particulares.",
+   ej:"Antropología social/cultural, arqueología, lingüística antropológica y antropología biológica.",
+   p:"¿Cuáles son las ramas de la antropología y qué estudia cada una?"},
+  {c:"Antropología cultural / social / etnología",
+   e:"Descripción y análisis de las culturas: tradiciones socialmente aprendidas, del pasado y del presente.",
+   ej:"Su subdisciplina es la etnografía (descripción sistemática de culturas contemporáneas).",
+   p:"¿Qué lugar ocupa la etnografía dentro de la antropología cultural?"},
+  {c:"Arqueología",
+   e:"Recupera y analiza los vestigios materiales de culturas pasadas (registro arqueológico) mediante excavaciones y relevamientos.",
+   ej:"Analiza amplias secuencias de evolución social y cultural bajo distintas condiciones naturales y culturales.",
+   p:"¿Qué aporta la arqueología a la comprensión del presente?"},
+  {c:"Lingüística antropológica",
+   e:"Estudia la diversidad e historia de las lenguas y su relación con la evolución del Homo sapiens y de las culturas.",
+   ej:"Reconstrucción de familias lingüísticas enteras.",
+   p:"¿Por qué la lingüística aporta a explicar la diversidad humana?"},
+  {c:"Antropología biológica / física",
+   e:"Trabaja sobre la base biológica: origen animal, evolución humana (restos esqueletarios) y variaciones hereditarias entre poblaciones.",
+   ej:"Mide los aportes relativos de herencia, cultura y ambiente a la vida humana.",
+   p:"¿Qué estudia la antropología biológica?"},
+  {c:"Etnografía",
+   e:"Subdisciplina de la antropología cultural dedicada a la descripción sistemática de culturas contemporáneas.",
+   ej:"Asociada al trabajo sobre el terreno (observación participante).",
+   p:"¿Qué relación hay entre etnografía y trabajo de campo?"}
+ ],
+ autores:[
+  {n:"Mariano Ramos, Sebastián Valverde, Analía García y Diego Lewin",a:"Autores del texto; presentan conceptos de ciencia, teoría, hipótesis, paradigma y epistemología, además de ramas y escuelas."}
+ ],
+ parcial:[
+  "Tema de la guía del parcial para esta clase: ramas de la antropología.",
+  "El mismo texto se trabaja en la Clase 5 con el tema Síntesis de ramas y teorías (ahí tiene ítem propio en la tarjeta del parcial).",
+  "En Clase 1 no tiene ítem propio en la bibliografía del parcial."
+ ],
+ preguntas:[
+  "¿Qué es una rama de la antropología y qué implica cada especialidad?",
+  "¿Cuáles son las ramas y qué estudia cada una?",
+  "¿Qué diferencia hay entre la clasificación de América (4 ramas) y la inglesa (3 ramas)?"
+ ],
+ nota:"Este texto contiene además una síntesis de las escuelas teóricas (evolucionismo, difusionismo, funcionalismo, particularismo, estructuralismo) que se trabaja en la Clase 5."
+},
+{
+ id:"lamas",clase:2,orden:4,
+ autor:"Marta Lamas",
+ texto:"El género es cultura — texto completo",
+ fase:"El género es cultura",
+ f:BP+"/UNIDAD_I/lamas marta-CORTO.pdf",
+ paginas:"5 páginas",
+ parIdx:2,
+ saber:[
+  "Todos los seres humanos enfrentamos un hecho idéntico en todas las sociedades: la diferencia sexual (biológica). El género es la simbolización cultural que cada sociedad hace de esa diferencia.",
+  "El género no es natural: atribuye lo femenino y lo masculino a personas, actividades y esferas; funciona como filtro cultural (interpreta el mundo) y como armadura (constriñe decisiones y oportunidades según el sexo del cuerpo).",
+  "En el desarrollo cognoscitivo, el género precede al conocimiento de la diferencia anatómica: niñas y niños de 2 a 3 años se autoperciben en femenino/masculino antes de conocer la diferencia biológica.",
+  "Base de la construcción del género: la arcaica división sexual del trabajo, hoy obsoleta por los avances tecnológicos pero persistente en distinciones socialmente aceptadas.",
+  "Hombres y mujeres: distintos como sexos pero iguales como seres humanos; solo en sexualidad y procreación hay experiencia genuinamente diferente, lo que no justifica ciudadanías distintas.",
+  "El sexismo (discriminación con base en el sexo) opera en todos los campos; el lenguaje es fundante de la matriz cultural."
+ ],
+ conceptos:[
+  {c:"Género",
+   e:"Simbolización cultural de la diferencia sexual: la atribución de lo femenino y lo masculino según cada cultura.",
+   ej:"Cada cultura simboliza de modo distinto la misma base biológica.",
+   p:"¿Por qué Lamas dice que el género es cultura y no naturaleza?"},
+  {c:"Diferencia sexual",
+   e:"Hecho biológico universal: la humanidad está compuesta por dos sexos; es la base sobre la que cada cultura construye su esquema de género.",
+   ej:"Todos los pueblos enfrentan el mismo dato (machos/hembras); lo que varía es su simbolización.",
+   p:"¿Qué es lo universal (diferencia sexual) y qué lo cultural (género)?"},
+  {c:"Filtro y armadura",
+   e:"Metáforas de Lamas: el género es un filtro que interpreta la realidad y una armadura que constriñe decisiones y oportunidades según se tenga cuerpo de mujer o de hombre.",
+   ej:"Esperar ciertos comportamientos o restringir ciertas actividades según el sexo.",
+   p:"¿En qué sentido el género funciona como filtro y como armadura?"},
+  {c:"El género precede a la diferencia sexual",
+   e:"En el desarrollo infantil, la autoidentificación en masculino/femenino (2-3 años) sucede antes de conocer la diferencia anatómica.",
+   ej:"Las niñas y niños se apoyan en símbolos: ropa, juguetes, gestos.",
+   p:"¿Qué demuestra el ejemplo de las niñas y niños de 2-3 años sobre la construcción del género?"},
+  {c:"División sexual del trabajo",
+   e:"Arcaica base de la construcción del género; los avances tecnológicos la volvieron obsoleta pero persiste en distinciones sociales.",
+   ej:"La asignación tradicional de esferas y tareas según el sexo.",
+   p:"¿Qué papel juega la división sexual del trabajo en la construcción del género?"},
+  {c:"Sexismo",
+   e:"Discriminación con base en el sexo; opera en todos los campos sociales.",
+   ej:"Trato desigual de varones y mujeres en ámbitos laborales, familiares o políticos.",
+   p:"¿Qué es el sexismo y dónde se manifiesta?"}
+ ],
+ autores:[
+  {n:"Marta Lamas",a:"Antropóloga feminista; autora de El género es cultura (2007), referente de la antropología feminista y la categoría de género."}
+ ],
+ parcial:[
+  "Tema de la guía del parcial: el género como construcción cultural, no como dato biológico.",
+  "Saber explicar la relación diferencia sexual (natural) / género (cultural) y las metáforas de filtro y armadura.",
+  "Se conecta con Pita y Martínez (desnaturalizar): el género es una construcción que aparece naturalizada."
+ ],
+ preguntas:[
+  "¿Por qué el género es cultura y no naturaleza?",
+  "¿Qué diferencia hay entre diferencia sexual y género?",
+  "¿Qué significa que el género sea un filtro y una armadura?",
+  "¿En qué se apoya la construcción del género y qué relación tiene con la división sexual del trabajo?"
+ ]
+},
+{
+ id:"pita",clase:2,orden:5,
+ autor:"Pita y Martínez",
+ texto:"Desnaturalizar — Trabajo Práctico 1, pp. 11-27",
+ fase:"Desnaturalizar (TP1) — la mirada antropológica",
+ f:BP+"/UNIDAD_I/Desnaturalizar- pita, martinez.pdf",
+ paginas:"pp. 11-27",
+ parIdx:3,
+ saber:[
+  "Desnaturalizar es poner en cuestión que exista un orden natural de las cosas: no hay prácticas, instituciones ni costumbres naturales en sí mismas, sino construcciones sociales.",
+  "Las construcciones sociales aparecen naturalizadas: se viven como si fueran parte del orden natural (así es, siempre fue así).",
+  "La naturalización se apoya en la conciencia práctica (Giddens; Lins Ribeiro): un saber manejarse en el mundo mediante reglas implícitas incorporadas como rutinas.",
+  "Ejemplos del texto: comer con cubiertos; la dificultad de imaginar una sociedad sin policía (se la critica pero se la supone necesaria).",
+  "La mirada antropológica se propone desnaturalizar y mostrar la historicidad de las relaciones sociales."
+ ],
+ conceptos:[
+  {c:"Desnaturalizar",
+   e:"Poner en cuestión el supuesto orden natural de las prácticas sociales, mostrando que son construcciones históricas.",
+   ej:"Reconocer que lo que aparece universal o eterno (instituciones, costumbres) varía según sociedad y época.",
+   p:"¿Qué implica desnaturalizar y para qué sirve la mirada antropológica?"},
+  {c:"Naturalización",
+   e:"Proceso por el cual las construcciones sociales se viven como parte del orden natural.",
+   ej:"El así es / siempre fue así aplicado a costumbres e instituciones.",
+   p:"¿Por qué lo social aparece como natural?"},
+  {c:"Construcción social",
+   e:"Prácticas, instituciones y costumbres que resultan de cómo cada sociedad, en su tiempo y lugar, resolvió hacer las cosas.",
+   ej:"Comer con cuchillo y tenedor no es natural: es una costumbre aprendida e histórica.",
+   p:"¿Qué significa que una práctica sea una construcción social?"},
+  {c:"Conciencia práctica",
+   e:"Concepto de Giddens (y Lins Ribeiro): saber manejarse en el mundo sin conciencia explícita de las reglas implícitas, incorporadas a la vida cotidiana como rutinas.",
+   ej:"Manejar cubiertos o saludar sin poder explicar las reglas que seguimos.",
+   p:"¿Cómo explica la conciencia práctica la naturalización de lo social?"},
+  {c:"Historicidad",
+   e:"Carácter histórico y cambiante de las relaciones sociales: no son eternas ni universales.",
+   ej:"Lo que cada sociedad vivió como natural cambió a lo largo de la historia.",
+   p:"¿Qué relación hay entre historicidad y desnaturalización?"},
+  {c:"La mirada antropológica",
+   e:"Forma de mirar lo social que desnaturaliza: pone entre paréntesis lo que parece obvio para analizarlo.",
+   ej:"Estudiar las instituciones como producciones sociales y no como datos dados.",
+   p:"¿Qué aporta la mirada antropológica al estudio de las relaciones sociales?"}
+ ],
+ autores:[
+  {n:"María Victoria Pita y María Josefina Martínez",a:"Autores del TP1; plantean la desnaturalización como ejercicio central de la mirada antropológica."},
+  {n:"Anthony Giddens",a:"Fuente del concepto de conciencia práctica."},
+  {n:"Gustavo Lins Ribeiro",a:"Otra fuente del concepto de conciencia práctica / desnaturalización."},
+  {n:"Tada",a:"Ejemplo trabajado en el texto (gestualidad japonesa: estar sentado vs. de pie; la silla como símbolo de autoridad)."}
+ ],
+ parcial:[
+  "Tema de la guía del parcial: desnaturalizar (TP1). Saber definir desnaturalización y naturalización con ejemplos.",
+  "Se conecta con Lamas (género naturalizado) y con la definición de la disciplina (Boivin)."
+ ],
+ preguntas:[
+  "¿Qué es desnaturalizar y qué es la naturalización? Dá ejemplos.",
+  "¿Qué rol juega la conciencia práctica en la naturalización?",
+  "¿Por qué se afirma que no existen prácticas ni instituciones naturales?"
+ ]
+},
+{
+ id:"boivin_cap1",clase:3,orden:6,
+ autor:"Boivin",
+ texto:"Capítulo 1 — La construcción del otro por la diferencia, pp. 27-33",
+ fase:"¿Cómo se consolidó el pensamiento evolucionista?",
+ f:BP+"/UNIDAD_II/Boivin CAP1.pdf",
+ paginas:"pp. 27-33",
+ parIdx:4,
+ saber:[
+  "El evolucionismo (fines del s. XIX) es el modelo paradigmático de construcción de la otredad por la diferencia.",
+  "Tres interrogantes: ¿por qué difieren las sociedades? (pregunta fundante), ¿qué es el hombre? y ¿cuál es su origen? (mediaciones hacia la primera).",
+  "Autores base: E. Tylor (Primitive Culture, 1871) y L. H. Morgan (La sociedad primitiva, 1877). Tylor da la primera definición científica de cultura.",
+  "Modelo estadial Salvajismo → Barbarie → Civilización: la diferencia cultural es de grado (progreso), no de tipo. Tres ordenamientos: acumulativo, temporal y causal.",
+  "Semejanzas: unidad psicobiológica de la especie y origen común. Método comparativo + deducción especulativa; noción de supervivencia.",
+  "El Nosotros (sociedad industrial del s. XIX) es punto de partida y cúspide del progreso; el otro se lee como anterioridad, ausencia, incompletud, confusión."
+ ],
+ conceptos:[
+  {c:"Diferencia (como construcción del otro)",
+   e:"El otro se construye como distinto y menor respecto del Nosotros, en una escala de progreso.",
+   ej:"El primitivo representa el pasado del hombre civilizado.",
+   p:"¿Cómo construye el evolucionismo al otro por la diferencia?"},
+  {c:"Modelo estadial (Salvajismo/Barbarie/Civilización)",
+   e:"Tres grandes grados del desarrollo cultural; la diferencia es de grado (cuánto se progresó), no de tipo.",
+   ej:"Las diferencias actuales en el espacio se leen como diferencias en el tiempo.",
+   p:"¿Cómo se ordenan los grados del modelo estadial?"},
+  {c:"Primera definición científica de cultura (Tylor)",
+   e:"Un todo complejo que comprende conocimientos, creencias, artes, moral, derecho, costumbres y toda otra capacidad y hábito adquiridos por el hombre en tanto miembro de una sociedad.",
+   ej:"La cultura se aprende: por herencia biológica se recibe lo innato; la condición humana se alcanza por aprendizaje.",
+   p:"¿Qué implica que la cultura sea adquirida y no heredada biológicamente?"},
+  {c:"Unidad psicobiológica de la especie",
+   e:"Explicación de las semejanzas: igual anatomía, cerebro, inteligencia y origen → causas uniformes → semejanzas culturales.",
+   ej:"Morgan: filiación de todos los pueblos de un tronco común.",
+   p:"¿Cómo explica el evolucionismo las semejanzas culturales?"},
+  {c:"Supervivencia",
+   e:"Rasgos del pasado que persisten en el presente; permite leer al otro contemporáneo como representación del pasado del Nosotros.",
+   ej:"Instituciones simples actuales como testimonio de etapas anteriores.",
+   p:"¿Qué papel juega la supervivencia en la construcción del otro?"},
+  {c:"Método comparativo y deducción especulativa",
+   e:"Ordenar semejanzas y diferencias como en las ciencias naturales; cuando faltan datos, se deduce.",
+   ej:"Deducción de que la promiscuidad debió preceder a la familia consanguínea.",
+   p:"¿Por qué Malinowski criticará luego la deducción especulativa?"},
+  {c:"Progreso cultural",
+   e:"Ley natural, universal y necesaria: la humanidad avanza acumulando cultura hacia la civilización.",
+   ej:"La acumulación crece en progresión geométrica y el tiempo entre grados disminuye.",
+   p:"¿Qué estatuto tiene el progreso en el evolucionismo?"}
+ ],
+ autores:[
+  {n:"Mauricio Boivin",a:"Autor del capítulo que reconstruye el evolucionismo como construcción de la otredad por la diferencia."},
+  {n:"E. B. Tylor",a:"Autor de Primitive Culture (1871); definición de cultura y método comparativo."},
+  {n:"L. H. Morgan",a:"Autor de La sociedad primitiva (1877); modelo estadial y dos lógicas evolutivas (materiales y no materiales)."}
+ ],
+ parcial:[
+  "Tema de la guía del parcial: ¿cómo se consolidó el pensamiento evolucionista?.",
+  "Núcleo: el modelo estadial, la definición tyloriana de cultura, la explicación de semejanzas y diferencias.",
+  "Se conecta con la Introducción (otro por diferencia), con Bellelli (qué es evolución) y con la crítica de Boas (particularismo)."
+ ],
+ preguntas:[
+  "¿Cuáles son los tres interrogantes del evolucionismo y cuál es el fundante?",
+  "Explique el modelo estadial y sus tres ordenamientos (acumulativo, temporal, causal).",
+  "¿Qué es la supervivencia y cómo se usa para leer al otro?",
+  "¿Cómo explica el evolucionismo las semejanzas culturales?",
+  "Dé la definición tyloriana de cultura y explique por qué es adquirida."
+ ]
+},
+{
+ id:"bellelli",clase:3,orden:7,
+ autor:"Bellelli y Scheinsohn",
+ texto:"¿De qué hablamos cuando hablamos de evolución? — texto extractado",
+ fase:"Antropología evolucionista",
+ f:BP+"/UNIDAD_II/bellelli.pdf",
+ paginas:"6 páginas (texto extractado)",
+ parIdx:5,
+ saber:[
+  "El concepto de evolución es anterior a Darwin: la idea de unión de los seres vivos se rastrea en los presocráticos; Aristóteles y la Edad Media la frenaron (cadena de los seres, fijismo).",
+  "Lamarck formula la primera teoría de la evolución orgánica (transformismo): herencia de los caracteres adquiridos + tendencia innata hacia la perfección. Con esto rompe el fijismo.",
+  "Darwin publica en 1859 El origen de las especies: su innovación no es la idea de evolución sino su mecanismo, la selección natural, y la evolución sin dirección.",
+  "La evolución no tiene dirección ni es progreso: es adaptación de organismos a condiciones cambiantes. Darwin prefería hablar de descendencia con modificación.",
+  "Después de Darwin: la Teoría Sintética (años 30: Darwin + genética, cambio gradual) y la Teoría de los Equilibrios Puntuados (Eldredge y Gould, 1972: largos períodos de estasis + cambios acelerados).",
+  "Evolución es a la vez proceso y teoría; no debe confundirse con perfección ni progreso (clave para el debate naturaleza-cultura)."
+ ],
+ conceptos:[
+  {c:"Evolución",
+   e:"Cambio de los seres vivos a lo largo del tiempo (y de otros niveles de la materia, según el contexto); no es sinónimo de progreso ni de perfección.",
+   ej:"El concepto ya existía entre los presocráticos y Lamarck; Darwin lo explica por selección natural.",
+   p:"¿Por qué evolución no debe confundirse con progreso?"},
+  {c:"Fijismo y cadena de los seres",
+   e:"Concepción anterior: cada ser ocupa un lugar fijo y perfecto por creación divina; no hay cambios entre especies.",
+   ej:"Los pensadores medievales ordenaron a los seres según su grado de perfección, con el humano en el punto más alto.",
+   p:"¿Qué implicaba la cadena de los seres para el cambio?"},
+  {c:"Transformismo de Lamarck",
+   e:"Primera teoría de la evolución orgánica: dos hipótesis — herencia de los caracteres adquiridos (ej. la jirafa que estira el cuello) y tendencia innata hacia la perfección.",
+   ej:"Con Lamarck hay transformación de una especie en otra: se rompe el fijismo.",
+   p:"¿Qué propone Lamarck y por qué rompe con el fijismo?"},
+  {c:"Selección natural (Darwin)",
+   e:"Mecanismo que guía la evolución: los organismos son variables; sobreviven y se reproducen más los mejor adaptados al medio cambiante (nace más de lo que puede sobrevivir).",
+   ej:"Polilla Biston betularia: con el hollín industrial, la variante oscura pasó a ser la común.",
+   p:"¿Cuál fue la innovación de Darwin respecto de Lamarck?"},
+  {c:"Evolución sin dirección",
+   e:"Darwin despoja a la evolución de dirección hacia lo perfecto: se trata de adaptación a condiciones cambiantes; prefería hablar de descendencia con modificación.",
+   ej:"No hay un plan que lleve de lo imperfecto a lo perfecto.",
+   p:"¿Qué implica que la evolución no tenga dirección?"},
+  {c:"Teoría Sintética y Equilibrios Puntuados",
+   e:"Sintética (años 30): síntesis de Darwin con la genética, cambio gradual. Equilibrios Puntuados (Eldredge y Gould, 1972): largos períodos de estasis + cambios morfológicos acelerados (especiación geográfica).",
+   ej:"Trilobites de Eldredge sin cambios en millones de años (estasis).",
+   p:"¿Qué aspecto del cambio discuten los equilibrios puntuados frente a la Teoría Sintética?"},
+  {c:"Evolución como proceso y como teoría",
+   e:"Distinción del texto: evolución como proceso que opera en distintos niveles de organización de la materia, y como teoría que explica esos procesos (teorías específicas para cada nivel).",
+   ej:"La teoría de la evolución del universo no explica por sí sola la historia de la vida en la Tierra.",
+   p:"¿Qué diferencia hay entre evolución como proceso y como teoría?"}
+ ],
+ autores:[
+  {n:"Cristina Bellelli y V. Scheinsohn",a:"Autores del texto (extractado, 1996); recorren la historia de la idea de evolución hasta sus discusiones actuales."},
+  {n:"Charles Darwin",a:"El origen de las especies (1859); selección natural y evolución sin dirección."},
+  {n:"Jean Baptiste Lamarck",a:"Primer formulador del transformismo (herencia de caracteres adquiridos); rompe el fijismo."},
+  {n:"Eldredge y Gould",a:"Teoría de los Equilibrios Puntuados (1972)."}
+ ],
+ parcial:[
+  "Tema de la guía del parcial: antropología evolucionista y el debate naturaleza-cultura.",
+  "Clave para no confundir evolución con progreso y para entender la base científica del evolucionismo (Boivin Cap. 1)."
+ ],
+ preguntas:[
+  "¿Por qué se afirma que el concepto de evolución es anterior a Darwin?",
+  "¿Qué rompe Lamarck y qué propone?",
+  "¿Cuál es la innovación de Darwin (1859)?",
+  "¿Qué significa que la evolución carece de dirección?"
+ ],
+ nota:"El PDF está escaneado y se digitalizó por OCR; algunos tramos quedaron incompletos, por lo que conviene repasar este tema con los materiales de la Unidad II."
+},
+{
+ id:"boivin_cap2",clase:4,orden:8,
+ autor:"Boivin",
+ texto:"Capítulo 2 — La construcción del otro por la diversidad",
+ fase:"La construcción del otro por la diversidad",
+ f:BP+"/UNIDAD_III/boivin CAP 2.pdf",
+ paginas:"18 páginas",
+ parIdx:6,
+ saber:[
+  "Entre las guerras, las nuevas teorías construyen al otro como diverso y no como diferente: se cuestiona la cuestión del origen y se estudia la diversidad de las sociedades contemporáneas.",
+  "Punto común: la crítica al evolucionismo. Deja de pensarse el progreso como ley universal y la historia como camino único.",
+  "Funcionalismo (Malinowski): la cultura es un aparato instrumental; cada institución cumple una función (satisfacer necesidades humanas). Las instituciones se parecen porque las necesidades son universales; la diversidad está en las formas de satisfacerlas.",
+  "Malinowski critica la deducción especulativa del evolucionismo y exige estudiar las sociedades en el presente (trabajo de campo, observación participante).",
+  "Estructuralismo (Lévi-Strauss): las culturas difieren en la superficie pero comparten estructuras inconscientes universales (oposiciones, reglas, intercambio, parentesco, mito). Caso paradigmático: la prohibición del incesto.",
+  "La prohibición del incesto (1969:58-59) es a la vez una regla cultural y social y constituye el vínculo de unión entre la existencia biológica y la social: es el movimiento por el cual se cumple el pasaje de la naturaleza a la cultura.",
+  "Lévi-Strauss rebate tres explicaciones: natural (repugnancia instintiva), psicológica (evitar la mezcla) y social (exogamia). Durkheim (social) apela a un vicio evolucionista, la noción de supervivencia. Las tres condujeron a callejones sin salida o contradicciones."
+ ],
+ conceptos:[
+  {c:"Diversidad (como construcción del otro)",
+   e:"El otro deja de ser diferente/menor y se vuelve diverso: un modo distinto de ser humano, explicable por su presente.",
+   ej:"De la cuestión del origen (evolucionismo) a la cuestión de la diversidad de los modos de vida.",
+   p:"¿Qué cambia con el paso de la diferencia a la diversidad?"},
+  {c:"Funcionalismo (Malinowski)",
+   e:"La cultura es un aparato instrumental: cada práctica e institución cumple una función (satisfacer necesidades básicas y derivadas).",
+   ej:"Las instituciones se parecen entre sociedades porque las necesidades humanas son las mismas.",
+   p:"¿Cómo explica Malinowski semejanzas y diversidad cultural?"},
+  {c:"Necesidad y función",
+   e:"La función es lo que una institución hace para la reproducción del todo social; la cultura se entiende como totalidad integrada.",
+   ej:"Estudiar la cultura en el presente (Trobriand), sin reconstruir orígenes.",
+   p:"¿Cuál es el concepto de función en Malinowski?"},
+  {c:"Trabajo de campo / observación participante",
+   e:"Exigencia metodológica de Malinowski contra la deducción especulativa: conocer a las sociedades en el presente, conviviendo con ellas.",
+   ej:"Malinowski inaugura el trabajo de campo intensivo en las islas Trobriand.",
+   p:"¿Por qué Malinowski rechaza la deducción especulativa del evolucionismo?"},
+  {c:"Estructuralismo (Lévi-Strauss)",
+   e:"Las culturas difieren en la superficie pero comparten estructuras inconscientes universales del pensamiento (oposiciones binarias, reglas, intercambio).",
+   ej:"El parentesco y el mito funcionan como el lenguaje: sistemas de relaciones y reglas.",
+   p:"¿Qué entiende Lévi-Strauss por estructura y dónde la busca?"},
+  {c:"Prohibición del incesto",
+   e:"Regla universal de contenido variable: natural (universal, social) y cultural (qué parientes se prohíben varía). Caso paradigmático del paso naturaleza → cultura.",
+   ej:"Lévi-Strauss rebate las explicaciones natural, psicológica y social (Durkheim) y la muestra como el vínculo de unión entre la existencia biológica y la social.",
+   p:"¿Por qué la prohibición del incesto es a la vez natural y cultural?"},
+  {c:"Exogamia y alianza",
+   e:"Al prohibir el incesto se obliga a casarse fuera del grupo → redes de alianza e intercambio → fundación de la organización social (parentesco).",
+   ej:"La regla crea vínculo social, no solo evita la mezcla biológica.",
+   p:"¿Qué papel cumple la exogamia en el pasaje de la naturaleza a la cultura?"},
+  {c:"Vicio evolucionista y supervivencia (Durkheim)",
+   e:"Durkheim explica la prohibición del incesto como supervivencia de creencias antiguas; Lévi-Strauss lo considera un vicio evolucionista.",
+   ej:"Las tres perspectivas (natural, psicológica, social) llevaron a callejones sin salida o contradicciones.",
+   p:"¿Por qué Lévi-Strauss critica la explicación de Durkheim?"}
+ ],
+ autores:[
+  {n:"Mauricio Boivin",a:"Autor del capítulo (sección sobre Lévi-Strauss y la diversidad)."},
+  {n:"B. Malinowski",a:"Funcionalismo británico: Los argonautas del Pacífico occidental (1922), Crimen y costumbre en la sociedad salvaje (1926)."},
+  {n:"Claude Lévi-Strauss",a:"Estructuralismo francés: estructuras inconscientes universales; la prohibición del incesto como paso de la naturaleza a la cultura (1969)."},
+  {n:"Émile Durkheim",a:"Explicación de la prohibición del incesto apelando a la supervivencia (vicio evolucionista según Lévi-Strauss)."}
+ ],
+ parcial:[
+  "Tema de la guía del parcial: la diversidad y las explicaciones de Malinowski y Lévi-Strauss.",
+  "Comparar la explicación funcionalista y la estructuralista de la prohibición del incesto (pregunta tipo parcial).",
+  "Saber el pasaje del otro diferente (Cap. 1) al otro diverso (Cap. 2) y la crítica compartida al evolucionismo."
+ ],
+ preguntas:[
+  "¿Qué cambia en la construcción del otro entre el evolucionismo y las teorías de entreguerras?",
+  "Explique la explicación funcionalista de las instituciones.",
+  "¿Qué explica la prohibición del incesto para Lévi-Strauss y por qué es el pasaje de la naturaleza a la cultura?",
+  "Compare la explicación funcionalista y la estructuralista de la prohibición del incesto.",
+  "¿Qué crítica le hace Lévi-Strauss a las explicaciones natural, psicológica y social (Durkheim)?"
+ ],
+ nota:"Este texto contiene además el desarrollo de Lévi-Strauss sobre el paso naturaleza-cultura que excede lo requerido por la guía del parcial."
+},
+{
+ id:"hernandez",clase:4,orden:9,
+ autor:"Hernández Soriano y Martínez",
+ texto:"El particularismo histórico — pp. 141-152",
+ fase:"El particularismo histórico",
+ f:BP+"/UNIDAD_III/HERNANDEZ MARTINEZ -Lischetti.pdf",
+ paginas:"pp. 141-152",
+ parIdx:7,
+ saber:[
+  "El particularismo histórico (EE.UU., fines s. XIX y primeras décadas del XX, dominante hasta 1940) reacciona contra el evolucionismo y contra el difusionismo extremo.",
+  "Boas: cada cultura es un conjunto coherente de rasgos conductuales e ideacionales con dos orígenes posibles: difusión (adaptada al conjunto) o creación independiente.",
+  "Crítica al evolucionismo: no hay un único sentido de la historia ni estadios universales de progreso; el método comparativo aislaba rasgos de su contexto. Cada cultura tiene una historia original, ecléctica.",
+  "Imperativo metodológico: entender cada cultura desde adentro (perspectiva emic), influencia neokantiana de Dilthey (las ciencias del espíritu se conocen desde adentro).",
+  "Teoría de la cultura: la cultura de un grupo no está determinada por su raza; el individuo se socializa en sus tradiciones desde la infancia y el lenguaje es fundamental (el individuo es prácticamente esclavo de la tradición).",
+  "Discípulos y derivaciones: Kroeber, Linton, Mead, Benedict, Lowie; líneas como historia cultural, aculturación y cultura y personalidad.",
+  "Críticas recibidas: empirismo ateórico (se volvió fuertemente ateórica; Honigmann) y relativismo cultural que aísla culturas y oculta la dominación mundial del capitalismo (García Canclini)."
+ ],
+ conceptos:[
+  {c:"Particularismo histórico",
+   e:"Escuela de Boas: cada cultura se entiende en su propia historia concreta y particular; no hay leyes universales de la evolución cultural.",
+   ej:"Las semejanzas pueden deberse a difusión, convergencia independiente o herencia común: hay que investigar cada caso.",
+   p:"¿Qué postula el particularismo histórico sobre el estudio de las culturas?"},
+  {c:"Crítica al evolucionismo",
+   e:"Boas rechaza las generalizaciones y reconstrucciones en abstracto: no hay camino único de progreso ni estadios universales.",
+   ej:"Cuestiona el método comparativo que aislaba rasgos de su contexto total.",
+   p:"¿Qué le critica Boas al evolucionismo y a su método comparativo?"},
+  {c:"Crítica al difusionismo extremo",
+   e:"No todo cambio cultural se explica por difusión desde un centro; Boas admite la difusión como fenómeno histórico a comprobar, no como ley.",
+   ej:"En las mismas condiciones se pueden generar elementos similares sin difusión.",
+   p:"¿Por qué Boas rechaza al difusionismo extremo?"},
+  {c:"Cultura sin determinación racial",
+   e:"La cultura de un grupo no está determinada por su raza: el concepto se independiza de todo biologicismo.",
+   ej:"Se opone al racismo científico de la época y a la idea de ordenamiento evolutivo de las sociedades.",
+   p:"¿Qué relación hay entre cultura y raza para Boas?"},
+  {c:"Perspectiva emic / desde adentro",
+   e:"Entender los fenómenos culturales desde adentro (interpretación subjetiva del grupo); influencia neokantiana (Dilthey).",
+   ej:"Ver el mundo a través de los ojos del nativo en vez de imponer la racionalidad occidental.",
+   p:"¿Qué método exige Boas para conocer una cultura?"},
+  {c:"Socialización y lenguaje",
+   e:"El individuo se socializa en las tradiciones de su grupo desde la infancia; el lenguaje es fundamental porque cada lengua expresa una construcción particular del mundo.",
+   ej:"Para Boas, el individuo es prácticamente esclavo de la tradición.",
+   p:"¿Qué papel juega el lenguaje en la socialización?"},
+  {c:"Relativismo cultural",
+   e:"Suspender los juicios de valor propios: cada cultura se juzga en sus propios parámetros.",
+   ej:"Avanza contra el etnocentrismo evolucionista, aunque luego se le critica que aísla culturas y oculta la dominación mundial.",
+   p:"¿Qué aporta y qué problemas se le señalan al relativismo cultural?"}
+ ],
+ autores:[
+  {n:"Claudia E. Hernández Soriano y María Josefina Martínez",a:"Autores del capítulo sobre el particularismo histórico."},
+  {n:"Franz Boas",a:"Patriarca del particularismo histórico; etnografía de los kwakiutl (potlach); el hombre que convirtió a la antropología en una ciencia (Mead)."},
+  {n:"Wilhelm Dilthey",a:"Influencia neokantiana: las ciencias humanas conocen desde adentro."},
+  {n:"Harris, Honigmann y García Canclini",a:"Fuentes de las críticas: empirismo ateórico, ateoricismo y relativismo frente a la interdependencia capitalista."}
+ ],
+ parcial:[
+  "Tema de la guía del parcial: el particularismo histórico; figura de Boas y su postura anti-racista.",
+  "Saber las críticas de Boas al evolucionismo y al difusionismo extremo y su concepción de cultura.",
+  "Se conecta con Boivin Cap. 2 (el otro como diverso), con la Introducción (observación participante) y con la mirada desnaturalizadora."
+ ],
+ preguntas:[
+  "¿Qué es el particularismo histórico?",
+  "¿Por qué Boas rechaza el evolucionismo y el difusionismo extremo?",
+  "¿Qué papel juega el lenguaje en la teoría boasiana de la cultura?",
+  "¿Qué críticas se le hicieron al particularismo histórico?",
+  "¿Cómo se relaciona Boas con la perspectiva emic?"
+ ]
+},
+{
+ id:"ramos_c5",clase:5,orden:10,
+ autor:"Ramos, Valverde, García y Lewin",
+ texto:"La antropología: algunos conceptos, ramas y escuelas — pp. 19-37",
+ fase:"Síntesis de ramas y teorías",
+ f:BP+"/UNIDAD_III/Ramos-et al-Conceptos-Ramas-y-Escuelas.pdf",
+ paginas:"pp. 19-37",
+ parIdx:8,
+ saber:[
+  "Corriente/escuela = conjunto de ideas y teorías que orientan la producción de un grupo de especialistas; representan posiciones metodológicas.",
+  "Evolucionismo (EE.UU./Inglaterra, 1870-1890): Morgan (La sociedad primitiva, 1877) y Tylor (La cultura primitiva, 1871). Primer intento sistemático de explicación científica de las diferencias culturales.",
+  "Difusionismo (EE.UU., Inglaterra, Alemania; 1890-1920, continúa hasta fines del s. XX): Wissler, Graebner, W.R. Smith, Rivers. Explica rasgos por transmisión desde un punto de origen hacia su entorno.",
+  "Particularismo histórico (EE.UU., 1910-1940): Boas. Rechaza generalizaciones; cada cultura en su historia.",
+  "Funcionalismo (Inglaterra, 1920-1930): Malinowski (Los argonautas del Pacífico occidental, 1922; Crimen y costumbre, 1926).",
+  "Estructural-funcionalismo (Inglaterra, 1930-1950): Radcliffe-Brown.",
+  "Estructuralismo (Francia, posguerra/años 60): paradigma pluridisciplinario; base lingüística de Saussure (Curso de lingüística general, 1916): lengua vs. habla."
+ ],
+ conceptos:[
+  {c:"Corriente o escuela",
+   e:"Conjunto de ideas y teorías que orientan la producción de un grupo de especialistas; representan posiciones metodológicas.",
+   ej:"Evolucionismo, difusionismo, particularismo, funcionalismo, estructural-funcionalismo, estructuralismo.",
+   p:"¿Qué es una corriente o escuela en antropología?"},
+  {c:"Evolucionismo",
+   e:"Primera escuela de la disciplina (2ª mitad del s. XIX; EE.UU./Inglaterra, 1870-1890): explicación científica de las diferencias culturales.",
+   ej:"Morgan (La sociedad primitiva, 1877) y Tylor (La cultura primitiva, 1871).",
+   p:"¿Cuándo y por qué surge el evolucionismo como escuela?"},
+  {c:"Difusionismo",
+   e:"Explica los rasgos culturales por transmisión desde un punto de origen hacia su entorno; reconstruye las líneas de difusión.",
+   ej:"Wissler (Hombre y cultura, 1922), Graebner (Método de la etnología, 1911), Rivers.",
+   p:"¿Cómo explica el difusionismo las semejanzas entre culturas?"},
+  {c:"Particularismo histórico",
+   e:"Escuela de Boas (EE.UU., 1910-1940): rechaza las generalizaciones y reconstrucciones en abstracto; estudia cada cultura en su historia.",
+   ej:"Boas, Cuestiones fundamentales de antropología cultural (1911); La mentalidad del hombre primitivo (1911).",
+   p:"¿Qué propone Boas frente al evolucionismo y al difusionismo?"},
+  {c:"Funcionalismo",
+   e:"Escuela inglesa (1920-1930): la cultura como aparato instrumental; las instituciones cumplen funciones que satisfacen necesidades humanas.",
+   ej:"Malinowski: Los argonautas del Pacífico occidental (1922), Crimen y costumbre (1926).",
+   p:"¿Qué entiende el funcionalismo por función?"},
+  {c:"Estructural-funcionalismo",
+   e:"Escuela inglesa (1930-1950) que pone el acento en la estructura social y su funcionamiento.",
+   ej:"Radcliffe-Brown es su principal exponente.",
+   p:"¿Qué relación tiene con el funcionalismo de Malinowski?"},
+  {c:"Estructuralismo",
+   e:"Corriente de posguerra (años 60; Francia) con paradigma pluridisciplinario: la cultura se estudia como estructura de relaciones y reglas (el signo dentro de un sistema).",
+   ej:"En lingüística, Saussure (Curso de lingüística general, 1916) distingue lengua de habla.",
+   p:"¿Qué aporta Saussure al estructuralismo?"},
+  {c:"Lengua y habla (Saussure)",
+   e:"Lengua: hecho social, código arbitrario e invariable que los hablantes comparten. Habla: acto individual, concreto y pasajero.",
+   ej:"El sistema de la lengua permite explicar las realizaciones individuales del habla.",
+   p:"¿Qué distingue Saussure entre lengua y habla?"}
+ ],
+ autores:[
+  {n:"Ramos, Valverde, García y Lewin",a:"Autores del texto; síntesis de las escuelas de la disciplina."},
+  {n:"Morgan y Tylor",a:"Evolucionismo (1870-1890)."},
+  {n:"Wissler, Graebner, W.R. Smith y Rivers",a:"Difusionismo (1890-1920)."},
+  {n:"Franz Boas",a:"Particularismo histórico (1910-1940)."},
+  {n:"Bronislaw Malinowski",a:"Funcionalismo (1920-1930)."},
+  {n:"Radcliffe-Brown",a:"Estructural-funcionalismo (1930-1950)."},
+  {n:"Ferdinand de Saussure",a:"Curso de lingüística general (1916); base teórica del estructuralismo."}
+ ],
+ parcial:[
+  "Tema de la guía del parcial: síntesis de ramas y teorías. La tabla comparativa de escuelas es material central de repaso.",
+  "Combinar con Boivin Cap. 1-2 (evolucionismo y críticas) y con Hernández (particularismo)."
+ ],
+ preguntas:[
+  "Enumere las principales escuelas con lugar, período y exponentes.",
+  "¿Qué es una escuela o corriente?",
+  "¿Qué diferencia hay entre el difusionismo y la posición de Boas?",
+  "¿Qué aporta Saussure al estructuralismo (lengua/habla)?"
+ ]
+},
+{
+ id:"sinisi",clase:5,orden:11,
+ autor:"Liliana Sinisi",
+ texto:"Teorías contemporáneas en Antropología — pp. 171-179",
+ fase:"Antropología contemporánea",
+ f:BP+"/UNIDAD_III/SINISI- Lischetti.pdf",
+ paginas:"pp. 171-179",
+ parIdx:9,
+ saber:[
+  "A partir de los años 60, la crisis colonial y la descolonización cuestionan el saber y la práctica antropológica (basada en la relación colonial explotador-explotado). El nuevo objeto/sujeto son las sociedades complejas y los países periféricos; surgen antropologías periféricas e indígenas.",
+  "Años 60: antropología simbólica, ecología cultural, antropología cognitiva (nueva etnografía) y estructuralismo.",
+  "Antropología simbólica (EE.UU., ~1963): Geertz (La interpretación de las culturas, 1973) → cultura como sistema de símbolos/significados públicos; las culturas como textos; punto de vista del actor. En Inglaterra: Turner y Douglas.",
+  "Ecología cultural: raíces en el evolucionismo del s. XIX y el materialismo histórico (Steward crea el término). Materialismo cultural (Marvin Harris): la cultura funciona para mantener la relación con el ambiente.",
+  "Nueva etnografía / antropología cognitiva (EE.UU., fines de los 50): describe la cultura con los conceptos nativos (emic); cae en descrédito hacia 1970 por su metodología rebuscada.",
+  "Años 70: marxismo estructural (Godelier, Terray, Sahlins, Meillasoux): cultura como ideología que legitima y oculta la explotación; y Escuela de la Economía Política: sistemas económico-políticos de gran escala y penetración capitalista.",
+  "Antropología interpretativa (Geertz): hermenéutica; cultura como armazón de textos (Ricoeur); descripción densa. Nuevas perspectivas: teoría de la práctica y perspectiva del actor (Goffman, Barth, Bourdieu).",
+  "Antropología postmoderna (años 80-90; EE.UU./Francia; S. Tyler acuña el término): meta-etnografía (crítica de la autoridad etnográfica), etnografía experimental y la línea crítica que proclama la crisis de la ciencia. El texto marca el límite: no se puede negar el trabajo de campo."
+ ],
+ conceptos:[
+  {c:"Descolonización y antropología",
+   e:"Tras la Segunda Guerra se liquidan los imperios coloniales; se cuestiona la base colonial del saber y la práctica antropológica (observación participante como práctica ideologizada por la posición del antropólogo).",
+   ej:"Integración de los primitivos a la sociedad global; surgen antropologías periféricas e indígenas.",
+   p:"¿Qué consecuencias tuvo la crisis colonial sobre la antropología?"},
+  {c:"Antropología simbólica (Geertz)",
+   e:"Cultura como sistema de símbolos o significados públicos compartidos (concepción semiótica); las actividades sociales pueden leerse como textos.",
+   ej:"Geertz, La interpretación de las culturas (1973); recuperación del punto de vista del actor.",
+   p:"¿Qué significa estudiar la cultura como un sistema de significados?"},
+  {c:"Ecología cultural y materialismo cultural",
+   e:"Escuela con raíces evolucionistas y marxistas: la cultura desde su dimensión ecológica; el móvil evolutivo es el intercambio entre cultura y ambiente.",
+   ej:"Steward (ecología cultural) y Marvin Harris (materialismo cultural): la sacralidad de las vacas en la India protegería la cadena alimentaria.",
+   p:"¿Qué sostienen las corrientes ecológico-culturales sobre la cultura?"},
+  {c:"Nueva etnografía / antropología cognitiva",
+   e:"Surge en EE.UU. (fines de los 50): describe la cultura con los conceptos nativos (emic), valiéndose de listas, árboles y análisis componencial del significado.",
+   ej:"Los nombres de la leña entre los tzeltal; las plantas silvestres entre los hanunóo.",
+   p:"¿Qué enfoque adopta la nueva etnografía y por qué cayó en descrédito?"},
+  {c:"Marxismo estructural",
+   e:"Usa el modelo de Marx para criticar la antropología anterior; la cultura se equipara a ideología: legitima el orden, mediatiza contradicciones y oculta las fuentes de explotación (Althusser).",
+   ej:"Godelier, Terray, Sahlins, Meillasoux: parentesco, descendencia e intercambio ligados a estructuras políticas y económicas.",
+   p:"¿Qué rol atribuye el marxismo estructural a la cultura?"},
+  {c:"Escuela de la Economía Política",
+   e:"Foco en los sistemas económico-políticos de gran escala regional o mundial (efectos de la penetración capitalista), e incluye lo simbólico y cultural (identidad de clase o de grupo).",
+   ej:"Luchas campesinas o étnicas en marcos político-económicos amplios.",
+   p:"¿Qué estudia la escuela de la economía política?"},
+  {c:"Antropología interpretativa",
+   e:"Conocer lo social por la hermenéutica (Dilthey, Ricoeur, Heidegger, Schutz); la cultura como armazón de textos a interpretar; descripción densa.",
+   ej:"Geertz forma parte de esta corriente y rescata lo particular de cada cultura (raíces en el particularismo de Boas).",
+   p:"¿Qué es la descripción densa?"},
+  {c:"Teoría de la práctica y perspectiva del actor",
+   e:"Se rechaza que existan marcas estructurales rígidas: la estructura es resultado de las acciones individuales y de las estrategias de los actores.",
+   ej:"Goffman, Barth, Bourdieu; categorías: práctica, acción, estrategia, agente, actor, sujeto.",
+   p:"¿En qué se opone la teoría de la práctica al modelo normativo durkheimiano?"},
+  {c:"Antropología postmoderna",
+   e:"Analiza la práctica antropológica a través de los textos etnográficos (meta-etnografía; crítica de la autoridad etnográfica; antropología de la antropología).",
+   ej:"S. Tyler (acuña el término); representantes: Rabinow, Clifford, Marcus, Tedlock. El texto marca el límite: sin trabajo de campo no hay datos.",
+   p:"¿Qué critica la antropología postmoderna y qué límites le marca el texto?"}
+ ],
+ autores:[
+  {n:"Liliana Sinisi",a:"Autora del capítulo de teorías contemporáneas en antropología."},
+  {n:"C. Geertz",a:"Antropología simbólica/interpretativa (La interpretación de las culturas, 1973)."},
+  {n:"Steward y Marvin Harris",a:"Ecología cultural y materialismo cultural."},
+  {n:"Godelier, Terray, Sahlins y Meillasoux",a:"Marxismo estructural; Althusser como fuente de la noción de ideología."},
+  {n:"Goffman, Barth y Bourdieu",a:"Teoría de la práctica y perspectiva del actor."},
+  {n:"S. Tyler, P. Rabinow y J. Clifford",a:"Antropología postmoderna."},
+  {n:"García Canclini",a:"Posición crítica del texto: sin trabajo de campo no hay datos."}
+ ],
+ parcial:[
+  "Tema de la guía del parcial: antropología contemporánea — el mapa de corrientes posteriores al estructuralismo.",
+  "Útil para comparar posturas sobre cultura, estructura y actor social.",
+  "Se conecta con Ramos (síntesis de escuelas) y con la crítica al evolucionismo."
+ ],
+ preguntas:[
+  "¿Qué consecuencias tuvo para la antropología el proceso de descolonización?",
+  "¿Qué propone la antropología simbólica de Geertz?",
+  "¿En qué se diferencian el marxismo estructural y la economía política?",
+  "¿Qué críticas hace el texto a la antropología postmoderna?",
+  "¿Cuál es el aporte de la teoría de la práctica / perspectiva del actor?"
+ ]
+}
+]
+};
+})();
