@@ -417,9 +417,60 @@ main{padding:1.8rem 0 4rem}
   .est-m-foot{flex-wrap:wrap}
   .est-nav{flex-basis:calc(50% - .3rem);flex-grow:1}
   .estc-fase{max-width:100%}
-  .est-fc-f,.est-fc-b{padding:1.2rem 1.15rem}
+.est-fc-f,.est-fc-b{padding:1.2rem 1.15rem}
   .est-fc-q{font-size:1.28rem}
   .est-zq{display:none}
+  .est-zq-d{display:none}
+}
+
+/* ── ESTUDIO · RESPONSIVE MULTI-PANTALLA (cualquier celular) ── */
+@media(max-width:640px){
+  .est-desc{font-size:.8rem}
+  .est-sum{font-size:.72rem;padding:.6rem .75rem}
+  .est-sum-pg{min-width:80px}
+  .est-top{gap:.45rem}
+  .est-search{min-width:0}
+  .est-search input{font-size:16px;padding:.6rem .8rem .6rem 2.3rem}
+  .est-sel-sum{font-size:.7rem;padding:.35rem .7rem}
+  .est-m-d{height:100vh;height:100dvh}
+  .est-m-head{padding:.5rem .6rem;gap:.45rem;padding-top:calc(.5rem + env(safe-area-inset-top,0px))}
+  .est-m-title{font-size:.92rem}
+  .est-m-toggle{padding:.42rem .6rem;font-size:.7rem}
+  .est-m-close{width:38px;height:38px;font-size:1.1rem}
+  .est-m-body{padding:.95rem .85rem calc(1.1rem + env(safe-area-inset-bottom,0px))}
+  .est-m-foot{padding:.6rem .7rem calc(.6rem + env(safe-area-inset-bottom,0px))}
+  .est-nav{font-size:.74rem;padding:.5rem .7rem}
+  .est-fc-in{min-height:clamp(220px,44vh,330px)}
+  .est-fc-f,.est-fc-b{padding:1.15rem 1.1rem}
+  .est-fc-q{font-size:clamp(1.05rem,7.5vw,1.3rem)}
+  .est-vhead{flex-direction:column;gap:.5rem}
+  .est-vnum{width:46px;height:46px;font-size:.9rem}
+  .est-m-h2{font-size:1.3rem}
+  .est-con{padding:.65rem .75rem}
+  .est-list{font-size:.84rem}
+  .est-done-card{padding:2rem 1rem}
+}
+@media(max-width:380px){
+  .estc{padding:.85rem .8rem .85rem .95rem;gap:.45rem}
+  .estc-autor{font-size:.95rem}
+  .estc-tag{font-size:.66rem;padding:.1rem .5rem}
+  .est-btn{font-size:.72rem;padding:.4rem .75rem}
+  .est-flash-btns .est-flash-btn,.est-flash-btns .est-mark{flex:1 1 auto;justify-content:center;padding:.45rem .55rem;font-size:.72rem}
+  .est-flash-top{flex-direction:column;align-items:flex-start}
+  .est-fc-f,.est-fc-b{padding:.95rem .85rem}
+  .est-fc-in{min-height:clamp(190px,46vh,270px)}
+  .est-fc-q{font-size:1.08rem}
+  .est-fc-txt{font-size:.84rem}
+  .est-sec{padding:.7rem .75rem}
+  .est-m-toggle{max-width:38vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+}
+@media(max-height:520px){
+  .est-m-d{height:100dvh}
+  .est-m-body{padding:.7rem .8rem 1rem}
+  .est-fc-in{min-height:clamp(160px,48vh,260px)}
+  .est-fc-f,.est-fc-b{padding:.9rem .9rem;gap:.5rem}
+  .est-fc-q{font-size:1.15rem}
+  .est-step-bar,.est-flash-top{margin-bottom:.45rem}
 }
 </style>
 </head>
@@ -1901,7 +1952,7 @@ renderEstudio();
     notes.push('bar='+bar);
 
     if(persist){
-      a(bar.indexOf('3/84 dominados')>=0,'persist bar:'+bar);
+      a(bar.indexOf('6/84 dominados')>=0,'persist bar:'+bar);
       a(estConf&&estConf['bellelli']&&estConf['bellelli'][1]==='o','persist bellelli');
       a(estConf&&estConf['pita']&&estConf['pita'][1]==='o','persist pita');
       a(estConf&&estConf['capitalismo']&&estConf['capitalismo'][0]==='o','persist capitalismo');
@@ -1954,20 +2005,22 @@ renderEstudio();
     a(estCIdx===1,'prev concept');
 
     // shuffle chip on/off
+    var pc=estCard(5).conceptos.length;
     body=document.getElementById('estMBody');
     var sc=body.querySelector('[data-est-shuf]');
     sc.click();
-    a(estShuf===true&&sc.classList.contains('on'),'shuf chip on');
-    a(estOrder.length===4,'shuf keeps 4:'+estOrder.length);
     body=document.getElementById('estMBody');
-    body.querySelector('[data-est-shuf]').click();
+    var scN=body.querySelector('[data-est-shuf]');
+    a(estShuf===true&&scN.classList.contains('on'),'shuf chip on: '+scN.className);
+    a(estOrder.length===pc,'shuf keeps all ('+pc+'): '+estOrder.length);
+    scN.click();
     a(estShuf===false,'shuf off');
 
     // repaso: filters 'o' (index1) but keeps 'r' (index0)
     body=document.getElementById('estMBody');
     click(body.querySelector('[data-est-rep]'));
     a(estRep===true,'rep on');
-    a(estOrder.length===3&&estOrder.indexOf(1)<0&&estOrder[0]===0,'rep filters o:'+estOrder.join(','));
+    a(estOrder.length===pc-1&&estOrder.indexOf(1)<0&&estOrder[0]===0,'rep filters o:'+estOrder.join(','));
     body=document.getElementById('estMBody');
     click(body.querySelector('[data-est-rep]'));
     a(estRep===false,'rep off');
